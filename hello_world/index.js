@@ -7,7 +7,25 @@ app.get('/', function(req, res){
 
 app.get('/hello', function(req, res){
   // ask OS what time and day it is and return a greeting
-  res.send('Good Morning');
+  // get current date from OS
+  var currentDate = new Date();
+  // get current day of the week
+  var dayOfTheWeek = currentDate.toLocaleString('en-us', {  weekday: 'long' });
+  // get current month, day and year
+  var date = (currentDate.getMonth()+1) + '/' + currentDate.getDate() + '/' + currentDate.getFullYear();
+  // get current hour
+  var time = currentDate.getHours();
+  var greeting = '';
+  // depending on the hour, set greeting to a specific greeting
+  if (time > 3 && time < 12) {
+    greeting = 'Good Morning';
+  } else if (time >= 12 && time < 20) {
+    greeting = 'Good Afternoon';
+  } else if (time >= 20 && time <= 3) {
+    greeting = 'Good Evening'
+  }
+  // return a greeting
+  res.send(`${greeting}` + '!' + ' It\'s' + ` ${dayOfTheWeek} ${date}`);
 });
 
 app.get('/hello/monday', function(req, res){
