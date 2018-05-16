@@ -33,7 +33,19 @@ app.get('/hello/monday', function(req, res){
   // return greeting for Morning if it is 4:00AM - 11:59AM, 
   // Afternoon if it is 12:00PM - 7:59PM and 
   // Evening if it is 8:00PM - 3:59AM.
-  res.send('Good Morning');
+  var currentDate = new Date();
+  var time = currentDate.getHours();
+  var greeting = '';
+  // depending on the hour, set greeting to a specific greeting
+  if (time > 3 && time < 12) {
+    greeting = 'Good Morning';
+  } else if (time >= 12 && time < 20) {
+    greeting = 'Good Afternoon';
+  } else if (time >= 20 && time <= 3) {
+    greeting = 'Good Evening'
+  }
+  // return a greeting
+  res.send(`${greeting}`);
 });
 
 app.get('/hello/monday/morning', function(req, res){
@@ -71,7 +83,20 @@ app.get('/hello/tuesday', function(req, res){
   // return greeting for Morning if it is 4:00AM - 11:59AM, 
   // Afternoon if it is 12:00PM - 7:59PM and 
   // Evening if it is 8:00PM - 3:59AM.
-  res.send('Good Morning');
+  var currentDate = new Date();
+  var time = currentDate.getHours();
+  var greeting = '';
+  // depending on the hour, set greeting to a specific greeting
+  if (time > 3 && time < 12) {
+    greeting = 'Good Morning';
+  } else if (time >= 12 && time < 20) {
+    greeting = 'Good Afternoon';
+  } else if (time >= 20 && time <= 3) {
+    greeting = 'Good Evening'
+  }
+  // return a greeting
+  res.send(`${greeting}`);
+
 });
 
 app.get('/hello/wednesday/morning', function(req, res){
@@ -94,7 +119,20 @@ app.get('/hello/wednesday', function(req, res){
   // return greeting for Morning if it is 4:00AM - 11:59AM, 
   // Afternoon if it is 12:00PM - 7:59PM and 
   // Evening if it is 8:00PM - 3:59AM.
-  res.send('Good Morning');
+  var currentDate = new Date();
+  var time = currentDate.getHours();
+  var greeting = '';
+  // depending on the hour, set greeting to a specific greeting
+  if (time > 3 && time < 12) {
+    greeting = 'Good Morning';
+  } else if (time >= 12 && time < 20) {
+    greeting = 'Good Afternoon';
+  } else if (time >= 20 && time <= 3) {
+    greeting = 'Good Evening'
+  }
+  // return a greeting
+  res.send(`${greeting}`);
+
 });
 
 app.get('/hello/thursday', function(req, res){
@@ -102,7 +140,20 @@ app.get('/hello/thursday', function(req, res){
   // return greeting for Morning if it is 4:00AM - 11:59AM, 
   // Afternoon if it is 12:00PM - 7:59PM and 
   // Evening if it is 8:00PM - 3:59AM.
-  res.send('Good Morning');
+  var currentDate = new Date();
+  var time = currentDate.getHours();
+  var greeting = '';
+  // depending on the hour, set greeting to a specific greeting
+  if (time > 3 && time < 12) {
+    greeting = 'Good Morning';
+  } else if (time >= 12 && time < 20) {
+    greeting = 'Good Afternoon';
+  } else if (time >= 20 && time <= 3) {
+    greeting = 'Good Evening'
+  }
+  // return a greeting
+  res.send(`${greeting}`);
+
 });
 
 app.get('/hello/thursday/morning', function(req, res){
@@ -125,7 +176,20 @@ app.get('/hello/friday', function(req, res){
   // return greeting for Morning if it is 4:00AM - 11:59AM, 
   // Afternoon if it is 12:00PM - 7:59PM and 
   // Evening if it is 8:00PM - 3:59AM.
-  res.send('Good Morning');
+  var currentDate = new Date();
+  var time = currentDate.getHours();
+  var greeting = '';
+  // depending on the hour, set greeting to a specific greeting
+  if (time > 3 && time < 12) {
+    greeting = 'Good Morning';
+  } else if (time >= 12 && time < 20) {
+    greeting = 'Good Afternoon';
+  } else if (time >= 20 && time <= 3) {
+    greeting = 'Good Evening'
+  }
+  // return a greeting
+  res.send(`${greeting}`);
+
 });
 
 app.get('/hello/friday/morning', function(req, res){
@@ -148,8 +212,20 @@ app.get('/hello/saturday', function(req, res){
   // return greeting for Morning if it is 4:00AM - 11:59AM, 
   // Afternoon if it is 12:00PM - 7:59PM and 
   // Evening if it is 8:00PM - 3:59AM.
+  var currentDate = new Date();
+  var time = currentDate.getHours();
+  var greeting = '';
+  // depending on the hour, set greeting to a specific greeting
+  if (time > 3 && time < 12) {
+    greeting = 'Good Morning';
+  } else if (time >= 12 && time < 20) {
+    greeting = 'Good Afternoon';
+  } else if (time >= 20 && time <= 3) {
+    greeting = 'Good Evening'
+  }
+  // return a greeting
+  res.send(`${greeting}`);
 
-  res.send('Good Morning');
 });
 
 app.get('/hello/saturday/morning', function(req, res){
@@ -172,7 +248,19 @@ app.get('/hello/sunday', function(req, res){
   // return greeting for Morning if it is 4:00AM - 11:59AM, 
   // Afternoon if it is 12:00PM - 7:59PM and 
   // Evening if it is 8:00PM - 3:59AM.
-  res.send('Good Morning');
+  var currentDate = new Date();
+  var time = currentDate.getHours();
+  var greeting = '';
+  // depending on the hour, set greeting to a specific greeting
+  if (time > 3 && time < 12) {
+    greeting = 'Good Morning';
+  } else if (time >= 12 && time < 20) {
+    greeting = 'Good Afternoon';
+  } else if (time >= 20 && time <= 3) {
+    greeting = 'Good Evening'
+  }
+  // return a greeting
+  res.send(`${greeting}`);
 });
 
 app.get('/hello/sunday/morning', function(req, res){
