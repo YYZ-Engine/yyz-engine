@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import App from './App.css';
 
 class Hello extends Component {
-
+/* TODO - figure out how to return JSON if query includes JSON
+  constructor(props) {
+    super(props);
+    this.state = {
+       data: ''
+    }
+  }
+ */
   displayGreeting = () => {
     let greeting = '';  
     var output = document.getElementById('result');
@@ -29,9 +36,17 @@ class Hello extends Component {
     
     navigator.geolocation.getCurrentPosition(success, error);
   }
-  
+ 
   render() {
-  
+  /* TODO - figure out how to return JSON if the query includes ?json 
+  if (props.location.search === '?json') {
+    this.displayGreeting().then((resData) => {
+      this.setState({
+        data: resData
+      });
+    })
+  }
+   */
     return (
       <div id='result'>
         <p>
