@@ -14,9 +14,9 @@ function getOutput() {
     var hour = d.getHours();
     var dayOfTheWeek = d.toLocaleString('en-us', {  weekday: 'long' });
     // depending on the hour, set greeting to a specific greeting
-    if (hour > 3 || hour < 12) {
+    if (hour > 3 && hour < 12) {
       greeting = 'Good Morning ' + dayOfTheWeek;
-    } else if (hour >= 12 || hour < 20) {
+    } else if (hour >= 12 && hour < 20) {
       greeting = 'Good Afternoon ' + dayOfTheWeek;
     } else if (hour >= 20 || hour <= 3) {
       greeting = 'Good Evening ' + dayOfTheWeek;
