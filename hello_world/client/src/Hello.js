@@ -28,7 +28,6 @@ class Hello extends Component {
         ...this.state, // unwraps the current state
         greeting: greeting
       });
-      //output.innerHTML = '<p>' + greeting + '</p>';
     }
 
     const error = () => {
