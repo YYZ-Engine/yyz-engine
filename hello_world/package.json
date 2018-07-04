@@ -1,0 +1,37 @@
+{
+  "name": "hello-world-client",
+  "version": "1.0.0",
+  "description": "hello-world client",
+  "author": {
+    "name": "Yan-Yin Choy",
+    "email": "yanyinchoy@gmail.com"
+  },
+  "license": "MIT",
+  "main": "server.js",
+  "scripts": {
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "dev:server": "cd client && yarn build && cd .. && yarn start",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.17.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zpallin/yyz-engine.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "Express"
+  ],
+  "bugs": {
+    "url": "https://github.com/zpallin/yyz-engine/issues"
+  },
+  "homepage": "https://github.com/zpallin/yyz-engine#readme"
+}
