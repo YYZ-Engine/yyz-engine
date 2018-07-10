@@ -46,15 +46,15 @@ class World extends Component {
 
   render() {
     return (
-            <div>
-              <h1>
-                Hello World
-              </h1>
-              <div id='result'>
-                {this.findMe()}
-                {this.state.result}
-              </div>
-            </div>
+      <div>
+        <h1>
+          Hello World
+        </h1>
+        <div id='result'>
+          {this.findMe()}
+          {this.state.result}
+        </div>
+      </div>
     );
   }
 }
