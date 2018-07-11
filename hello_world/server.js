@@ -24,7 +24,6 @@ const getRandCity = () => {
   var cities  = ["Berlin", "Bilbao", "Kyoto", "Seattle", "Jalisco", "Lima", "Los Angeles", "Oakland", "Houston" , "Atlanta" , "Perth", "Auckland", "Shanghai", "Hyderabad", "Istanbul", "Paris"];
   city = cities[Math.floor(cities.length * Math.random())];
 }
-getRandCity();
 
 app.get('/api/hello', (req, res) => {
   if ('json' in req.query) {
@@ -107,6 +106,8 @@ app.get('/api/hello/sunday', (req, res) => {
 });
 
 app.get('/api/world', (req, res) => {
+  getRandCity();
+
   if ('json' in req.query) {
     res.send({ 
       city: city, 
