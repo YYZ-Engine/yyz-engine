@@ -1,14 +1,30 @@
 const express = require('express');
 const path = require('path');
-
 const app = express();
 const port = process.env.PORT || 5000;
 
 let greeting = 'Good Morning';
 let dayOfWeek = 'Monday';
 let city = 'City';
-let state = 'State';
-let country = 'Country';
+
+var d = new Date;
+var hour = d.getHours();
+dayOfWeek = d.toLocaleString('en-us', {  weekday: 'long' });
+
+// depending on the hour, set greeting to a specific greeting
+if (hour > 3 && hour < 12) {
+  greeting = 'Good Morning'
+} else if (hour >= 12 && hour < 20) {
+  greeting = 'Good Afternoon'
+} else if (hour >= 20 || hour <= 3) {
+  greeting = 'Good Evening'
+}
+
+const getRandCity = () => {
+  var cities  = ["Berlin", "Bilbao", "Kyoto", "Seattle", "Jalisco", "Lima", "Los Angeles", "Oakland", "Houston" , "Atlanta" , "Perth", "Auckland", "Shanghai", "Hyderabad", "Istanbul", "Paris"];
+  city = cities[Math.floor(cities.length * Math.random())];
+}
+getRandCity();
 
 app.get('/api/hello', (req, res) => {
   if ('json' in req.query) {
@@ -16,8 +32,9 @@ app.get('/api/hello', (req, res) => {
       greeting: greeting, 
       dayOfWeek: dayOfWeek 
     });
-  }
+  } 
   res.send(greeting + ' ' + dayOfWeek);
+
 });
 
 
@@ -25,11 +42,9 @@ app.get('/api/world', (req, res) => {
   if ('json' in req.query) {
     res.send({ 
       city: city, 
-      state: state,
-      country: country 
     });
   }
-  res.send(city + ', ' + state + ', ' + country);
+  res.send(city);
 });
 
 
