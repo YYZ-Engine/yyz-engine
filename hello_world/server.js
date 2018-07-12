@@ -1,11 +1,13 @@
 const express = require('express');
 const path = require('path');
+const publicIp = require('public-ip');
+const ip2countrify = require( 'ip2countrify');
 const app = express();
 const port = process.env.PORT || 5000;
 
-let greeting = 'Good Morning';
-let dayOfWeek = 'Monday';
-let city = 'City';
+let greeting = '';
+let dayOfWeek = '';
+let country = '';
 
 var d = new Date;
 var hour = d.getHours();
@@ -18,11 +20,6 @@ if (hour > 3 && hour < 12) {
   greeting = 'Good Afternoon'
 } else if (hour >= 20 || hour <= 3) {
   greeting = 'Good Evening'
-}
-
-const getRandCity = () => {
-  var cities  = ["Berlin", "Bilbao", "Kyoto", "Seattle", "Jalisco", "Lima", "Los Angeles", "Oakland", "Houston" , "Atlanta" , "Perth", "Auckland", "Shanghai", "Hyderabad", "Istanbul", "Paris"];
-  city = cities[Math.floor(cities.length * Math.random())];
 }
 
 app.get('/api/hello', (req, res) => {
@@ -106,14 +103,23 @@ app.get('/api/hello/sunday', (req, res) => {
 });
 
 app.get('/api/world', (req, res) => {
-  getRandCity();
-
+  publicIp.v6().then(ip => {
+    ip2countrify.lookup(
+      ip,
+      function( ip, results, error ) {
+        if ( error ) {
+          return console.warn( 'An error has occurred: ' + error );
+        }
+        country = results.countryName
+      }
+    );
+  });
   if ('json' in req.query) {
     res.send({ 
-      city: city, 
+      country: country, 
     });
   }
-  res.send(city);
+  res.send(country);
 });
 
 
