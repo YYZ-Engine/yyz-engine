@@ -19,7 +19,8 @@
   "dependencies": {
     "express": "^4.16.2",
     "ip2countrify": "^0.2.0",
-    "public-ip": "^2.4.0"
+    "public-ip": "^2.4.0",
+    "request": "^2.87.0"
   },
   "devDependencies": {
     "concurrently": "^3.5.0",
