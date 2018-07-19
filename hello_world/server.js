@@ -1,9 +1,8 @@
 const express = require('express');
 const path = require('path');
-const publicIp = require('public-ip');
-const ip2countrify = require( 'ip2countrify');
 const app = express();
 const port = process.env.PORT || 5000;
+const yyz_hello = require('./libs/yyz-hello');
 
 let greeting = '';
 let dayOfWeek = '';
@@ -103,23 +102,7 @@ app.get('/api/hello/sunday', (req, res) => {
 });
 
 app.get('/api/world', (req, res) => {
-  publicIp.v6().then(ip => {
-    ip2countrify.lookup(
-      ip,
-      function( ip, results, error ) {
-        if ( error ) {
-          return console.warn( 'An error has occurred: ' + error );
-        }
-        country = results.countryName
-      }
-    );
-  });
-  if ('json' in req.query) {
-    res.send({ 
-      country: country, 
-    });
-  }
-  res.send(country);
+  yyz_hello.GetLocation(req, res);
 });
 
 
