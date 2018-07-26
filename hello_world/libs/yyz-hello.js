@@ -23,23 +23,27 @@ const getLocation = (req, res) => {
   });
 }
 
+let greeting = '';
+let dayOfWeek = '';
+let country = '';
+let d = new Date;
+let hour = d.getHours();
+dayOfWeek = d.toLocaleString('en-us', {  weekday: 'long' });
+
+// depending on the hour, set greeting to a specific greeting
+if (hour > 3 && hour < 12) {
+  greeting = 'Good Morning'
+} else if (hour >= 12 && hour < 20) {
+  greeting = 'Good Afternoon'
+} else if (hour >= 20 || hour <= 3) {
+  greeting = 'Good Evening'
+}
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 const getGreeting = (req, res) => {
-  let greeting = '';
-  let dayOfWeek = '';
-  let country = '';
-  let d = new Date;
-  let hour = d.getHours();
-  dayOfWeek = d.toLocaleString('en-us', {  weekday: 'long' });
-
-  // depending on the hour, set greeting to a specific greeting
-  if (hour > 3 && hour < 12) {
-    greeting = 'Good Morning'
-  } else if (hour >= 12 && hour < 20) {
-    greeting = 'Good Afternoon'
-  } else if (hour >= 20 || hour <= 3) {
-    greeting = 'Good Evening'
-  }
-
   if ('json' in req.query) {
     res.json({
       greeting: greeting,
@@ -50,7 +54,18 @@ const getGreeting = (req, res) => {
   }
 }
 
+const getDayGreeting = (req, res) => {
+  let days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  let day = capitalizeFirstLetter(req.path.split("/hello/")[1]);
+  if ('json' in req.query) {
+    res.json({'greeting': greeting, 'dayOfWeek': day});
+  } else {
+    res.send(greeting + ' ' + day);
+  }
+}
+
 module.exports = {
   getLocation: getLocation,
-  getGreeting: getGreeting
+  getGreeting: getGreeting,
+  getDayGreeting: getDayGreeting
 };

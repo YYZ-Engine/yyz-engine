@@ -8,80 +8,17 @@ app.get('/api/hello', (req, res) => {
   yyz_hello.getGreeting(req, res);
 });
 
-app.get('/api/hello/monday', (req, res) => {
-  if ('json' in req.query) {
-    res.send({ 
-      greeting: greeting, 
-      dayOfWeek: 'Monday' 
-    });
-  } 
-  res.send(greeting + ' ' + 'Monday');
-});
+let days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-app.get('/api/hello/tuesday', (req, res) => {
-  if ('json' in req.query) {
-    res.send({ 
-      greeting: greeting, 
-      dayOfWeek: 'Tuesday' 
-    });
-  } 
-  res.send(greeting + ' ' + 'Tuesday');
-});
-
-app.get('/api/hello/wednesday', (req, res) => {
-  if ('json' in req.query) {
-    res.send({ 
-      greeting: greeting, 
-      dayOfWeek: 'Wednesday' 
-    });
-  } 
-  res.send(greeting + ' ' + 'Wednesday');
-});
-
-app.get('/api/hello/thursday', (req, res) => {
-  if ('json' in req.query) {
-    res.send({ 
-      greeting: greeting, 
-      dayOfWeek: 'Thursday' 
-    });
-  } 
-  res.send(greeting + ' ' + 'Thursday');
-});
-
-app.get('/api/hello/friday', (req, res) => {
-  if ('json' in req.query) {
-    res.send({ 
-      greeting: greeting, 
-      dayOfWeek: 'Friday' 
-    });
-  } 
-  res.send(greeting + ' ' + 'Friday');
-});
-
-app.get('/api/hello/saturday', (req, res) => {
-  if ('json' in req.query) {
-    res.send({ 
-      greeting: greeting, 
-      dayOfWeek: 'Saturday' 
-    });
-  } 
-  res.send(greeting + ' ' + 'Saturday');
-});
-
-app.get('/api/hello/sunday', (req, res) => {
-  if ('json' in req.query) {
-    res.send({ 
-      greeting: greeting, 
-      dayOfWeek: 'Sunday' 
-    });
-  } 
-  res.send(greeting + ' ' + 'Sunday');
-});
+for (var day of days) {
+  app.get('/api/hello/'+day, (req, res) => {
+    yyz_hello.getDayGreeting(req,res);
+  });
+}
 
 app.get('/api/world', (req, res) => {
   yyz_hello.getLocation(req, res);
 });
-
 
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
