@@ -1,27 +1,41 @@
 const request = require('request');
+const yyz_hello = require('../libs/yyz-hello');
 
-let greeting = '';
-let dayOfWeek = '';
+describe('get custom greeting based on local day and time', () => {
+  yyz_hello.greetingResponse();
+  let date = yyz_hello.greetingResponse().date;
+  let hour = yyz_hello.greetingResponse().hour;
 
-var d = new Date;
-var hour = d.getHours();
-dayOfWeek = d.toLocaleString('en-us', {  weekday: 'long' });
+  it('has an date', () => {
+    expect(date).toBeDefined();
+  });
 
-// depending on the hour, set greeting to a specific greeting
-if (hour > 3 && hour < 12) {
-  greeting = 'Good Morning'
-} else if (hour >= 12 && hour < 20) {
-  greeting = 'Good Afternoon'
-} else if (hour >= 20 || hour <= 3) {
-  greeting = 'Good Evening'
-}
+  it('has an hour', () => {
+    expect(hour).toBe(date.getHours());
+  });
 
-var helloResponse = {'greeting': greeting, 'dayOfWeek': dayOfWeek};
+  it('has a greeting', () => {
+    let greeting = '';
+    if (hour > 3 && hour < 12) {
+      greeting = 'Good Morning'
+    } else if (hour >= 12 && hour < 20) {
+      greeting = 'Good Afternoon'
+    } else if (hour >= 20 || hour <= 3) {
+      greeting = 'Good Evening'
+    }
+    const customGreeting = yyz_hello.greetingResponse().greeting;
+    expect(customGreeting).toBe(greeting);
+  });
 
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
+  it('has a day', () => {
+    const day = yyz_hello.greetingResponse().dayOfWeek;
+    const todaysDate = date.toLocaleString('en-us', {  weekday: 'long' });
+    expect(day).toBe(todaysDate);
+  });
 
+});
+
+/*  Integration Tests
 it("should respond with a greeting based on local time and day", function(done) {
   request("http://localhost:5000/api/hello?json", function(error, response, body){
     expect(body).toEqual(JSON.stringify(helloResponse));
@@ -38,4 +52,7 @@ it("should respond with a greeting based on local time and given day of week", f
       done();
     });
   }
-});
+}); 
+
+*/
+
