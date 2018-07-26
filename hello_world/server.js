@@ -4,31 +4,8 @@ const app = express();
 const port = process.env.PORT || 5000;
 const yyz_hello = require('./libs/yyz-hello');
 
-let greeting = '';
-let dayOfWeek = '';
-let country = '';
-
-var d = new Date;
-var hour = d.getHours();
-dayOfWeek = d.toLocaleString('en-us', {  weekday: 'long' });
-
-// depending on the hour, set greeting to a specific greeting
-if (hour > 3 && hour < 12) {
-  greeting = 'Good Morning'
-} else if (hour >= 12 && hour < 20) {
-  greeting = 'Good Afternoon'
-} else if (hour >= 20 || hour <= 3) {
-  greeting = 'Good Evening'
-}
-
 app.get('/api/hello', (req, res) => {
-  if ('json' in req.query) {
-    res.send({ 
-      greeting: greeting, 
-      dayOfWeek: dayOfWeek 
-    });
-  } 
-  res.send(greeting + ' ' + dayOfWeek);
+  yyz_hello.getGreeting(req, res);
 });
 
 app.get('/api/hello/monday', (req, res) => {
@@ -102,7 +79,7 @@ app.get('/api/hello/sunday', (req, res) => {
 });
 
 app.get('/api/world', (req, res) => {
-  yyz_hello.GetLocation(req, res);
+  yyz_hello.getLocation(req, res);
 });
 
 
