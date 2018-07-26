@@ -39,10 +39,10 @@ const greetingResponse = () => {
     greeting = 'Good Evening'
   }
 
-  return ({'greeting': greeting, 'dayOfWeek': dayOfWeek});
+  return ({'date': d, 'hour': hour, 'greeting': greeting, 'dayOfWeek': dayOfWeek});
 }
 
-function capitalizeFirstLetter(string) {
+const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
@@ -70,6 +70,7 @@ const getDayGreeting = (req, res) => {
 }
 
 module.exports = {
+  greetingResponse: greetingResponse,
   getLocation: getLocation,
   getGreeting: getGreeting,
   getDayGreeting: getDayGreeting
