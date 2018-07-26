@@ -26,7 +26,6 @@ const getLocation = (req, res) => {
 const greetingResponse = () => {
   let greeting = '';
   let dayOfWeek = '';
-  let country = '';
   let d = new Date;
   let hour = d.getHours();
   dayOfWeek = d.toLocaleString('en-us', {  weekday: 'long' });
