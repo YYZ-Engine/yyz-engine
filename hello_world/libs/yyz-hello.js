@@ -3,7 +3,7 @@ const ip2countrify = require( 'ip2countrify');
 const path = require('path');
 
 const getLocation = (req, res) => {
-  var country = 'test';
+  var country = '';
   publicIp.v6().then(ip => {
     ip2countrify.lookup(
       ip,
