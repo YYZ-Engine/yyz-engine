@@ -70,6 +70,7 @@ const getDayGreeting = (req, res) => {
 }
 
 module.exports = {
+  capitalizeFirstLetter: capitalizeFirstLetter,
   greetingResponse: greetingResponse,
   getLocation: getLocation,
   getGreeting: getGreeting,
