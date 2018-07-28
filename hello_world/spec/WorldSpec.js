@@ -1,7 +1,7 @@
 const request = require('request');
 const publicIp = require('public-ip');
 const ip2countrify = require( 'ip2countrify');
-
+/*
 let country = '';
 
 publicIp.v6().then(ip => {
@@ -22,4 +22,4 @@ it("should respond with the user's country", function(done) {
     expect(body).toEqual(JSON.stringify(worldResponse));
     done();
   });
-});
+});*/
