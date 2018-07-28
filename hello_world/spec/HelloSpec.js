@@ -1,4 +1,6 @@
 const request = require('request');
+const httpMocks = require('node-mocks-http');
+
 const yyz_hello = require('../libs/yyz-hello');
 
 describe('get custom greeting based on local day and time', () => {
@@ -34,6 +36,38 @@ describe('get custom greeting based on local day and time', () => {
   });
 
 });
+
+describe('helper functions', () => {
+  let day = 'monday'
+
+  let capitalizedString = yyz_hello.capitalizeFirstLetter(day);
+
+  it('passes a random weekday string as the argument', () => {
+    expect(day).toBeDefined();
+  });
+
+  it('can capitalize the first letter', () => {
+    expect(day.charAt(0).toUpperCase()).toBe('M');
+  });
+
+  it('can slice the string by the first index', () => {
+    expect(day.slice(1)).toBe('onday');
+  });
+
+  it('can return a string with the first letter capitalized', () => {
+    expect(capitalizedString).toBe('Monday');
+  });
+});
+
+/*
+let req = mocks.createRequest();
+let res = mocks.createResponse();
+
+describe('getGreeting module', () => {
+  yyz_hello.getGreeting(req,res);
+
+}
+*/
 
 /*  Integration Tests
 it("should respond with a greeting based on local time and day", function(done) {
