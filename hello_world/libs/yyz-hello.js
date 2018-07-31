@@ -73,15 +73,19 @@ const greetingResponse = () => {
 
 const getGreeting = (req, res) => {
   greetingResponse();
+  var greeting = greetingResponse().greeting;
+  var day = greetingResponse().dayOfWeek;
   if ('json' in req.query) {
-    res.json({
-      greeting: greetingResponse().greeting,
-      dayOfWeek: greetingResponse().dayOfWeek
+    var data = ({
+      'greeting': greeting,
+      'dayOfWeek': day
     });
+    res.setHeader('Content-Type', 'application/json');
+    res.send(data);
   } else {
-    res.send(greetingResponse().greeting + ' ' + greetingResponse().dayOfWeek);
+    res.send(greeting + ' ' + day);
   }
-}
+};
 
 const getDayGreeting = (req, res) => {
   greetingResponse();
