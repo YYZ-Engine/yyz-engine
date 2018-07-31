@@ -2,6 +2,35 @@ const publicIp = require('public-ip');
 const ip2countrify = require( 'ip2countrify');
 const path = require('path');
 
+const checkIfJSON = (x) => {
+
+  if (typeof x == 'object') {
+    // test if x can be turned into a JSON string
+    try { x = JSON.stringify(x); }
+    catch(err) {
+      return false;
+    }
+  }
+
+  if (typeof x == 'string') {
+    // test if it can get the JS value or object from x
+    try { x = JSON.parse(x); }
+    catch (err) {
+      return false;
+    }
+  }
+
+  if (typeof x != 'object') {
+    return false;
+  }
+
+  return true;
+};
+
+const capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 const getLocation = (req, res) => {
   var country = '';
   publicIp.v6().then(ip => {
@@ -42,10 +71,6 @@ const greetingResponse = () => {
   return ({'date': d, 'hour': hour, 'greeting': greeting, 'dayOfWeek': dayOfWeek});
 }
 
-const capitalizeFirstLetter = (string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 const getGreeting = (req, res) => {
   greetingResponse();
   if ('json' in req.query) {
@@ -70,6 +95,7 @@ const getDayGreeting = (req, res) => {
 }
 
 module.exports = {
+  checkIfJSON: checkIfJSON,
   capitalizeFirstLetter: capitalizeFirstLetter,
   greetingResponse: greetingResponse,
   getLocation: getLocation,
