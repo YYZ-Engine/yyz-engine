@@ -28,7 +28,6 @@ const capitalizeFirstLetter = (string) => {
 }
 
 const getLocation = (req, res) => {
-  var country = '';
   publicIp.v6().then(ip => {
     ip2countrify.lookup(
       ip,
@@ -37,11 +36,11 @@ const getLocation = (req, res) => {
           console.warn( 'An error has occurred: ' + error );
           res.send("error");
         }
-        var countryResult = ({"country": results.countryName});
+        var countryResult = ({'country': results.countryName});
         if (JSON.stringify(req.query).match(/json/g)) {
-          var data = JSON.parse(JSON.stringify({countryResult}));
+          var data = countryResult;
           res.setHeader('Content-Type', 'application/json');
-          res.send(data);
+          res.json(data);
         } else {
           res.send(results.countryName);
         }
