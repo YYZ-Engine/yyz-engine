@@ -10,7 +10,10 @@ module.exports = {
     },
     "globals": {
         "require": false,
-        "module": false
+        "module": false,
+        "describe": false,
+        "it": false,
+        "expect": false
     },
     "rules": {
         "indent": [
