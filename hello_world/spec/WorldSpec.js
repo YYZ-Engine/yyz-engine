@@ -1,5 +1,7 @@
 const httpMocks = require('node-mocks-http');
 const yyz_hello = require('../libs/yyz-hello');
+const ip2countrify = require('ip2countrify');
+const publicIp = require('public-ip');
 
 describe('get location module', () => {
   describe('/api/world', () => {
@@ -13,19 +15,21 @@ describe('get location module', () => {
       eventEmitter: require('events').EventEmitter
     });
 
-    it('should respond with the country of the user', function(done) {
-      res.on('end', function() {
-        expect(res._getData()).toBeDefined();
-        done();
+    yyz_hello.getLocation = (req,res) => {
+      it('get location from IPv6', function( done ) {
+        publicIp.v6().then(ip => {
+          ip2countrify.lookup(
+            ip,
+            function( ip, results ) {
+              var country = results.countryName;
+              expect(country).toBe('United States');
+              done();
+            }
+          );
+        });
       });
-
-      yyz_hello.getLocation(req,res);
-    });
-
-    it('gets a JSON response', () => {
-      res._getData();
-      expect(yyz_hello.checkIfJSON(res._getData())).toBe(false);
-    });
+    }
+    yyz_hello.getLocation(req,res);
   });
 
   describe('/api/world?json', () => {
@@ -40,18 +44,21 @@ describe('get location module', () => {
       eventEmitter: require('events').EventEmitter
     });
 
-    it('should respond with the country of the user', function(done) {
-      res.on('end', function() {
-        expect(res._getData()).toBeDefined();
-        done();
+    yyz_hello.getLocation = (req,res) => {
+      it('get location from IPv6', function( done ) {
+        publicIp.v6().then(ip => {
+          ip2countrify.lookup(
+            ip,
+            function( ip, results ) {
+              var response = ({'country': results.countryName});
+              expect(response.country).toBe('United States');
+              done();
+            }
+          );
+        });
       });
+    }
 
-      yyz_hello.getLocation(req,res);
-    });
-
-    it('gets a JSON response', () => {
-      res._getData();
-      expect(yyz_hello.checkIfJSON(res._getData())).toBe(true);
-    });
+    yyz_hello.getLocation(req,res);
   });
 });
