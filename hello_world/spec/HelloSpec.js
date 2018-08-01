@@ -103,19 +103,19 @@ describe('routes module', () => {
     let greeting = yyz_hello.greetingResponse().greeting;
     let dayOfWeek = yyz_hello.greetingResponse().dayOfWeek;
 
-    it('gets the date from calling getGreeting ', () => {
+    it('gets the date from calling getGreeting', () => {
       expect(date).toBeDefined();
     });
 
-    it('gets the hour from calling getGreeting ', () => {
+    it('gets the hour from calling getGreeting', () => {
       expect(hour).toBeDefined();
     });
 
-    it('gets the greeting from calling getGreeting ', () => {
+    it('gets the greeting from calling getGreeting', () => {
       expect(greeting).toBeDefined();
     });
 
-    it('gets the day from calling getGreeting ', () => {
+    it('gets the day from calling getGreeting', () => {
       expect(dayOfWeek).toBeDefined();
     });
 
@@ -155,19 +155,19 @@ describe('routes module', () => {
     let greeting = yyz_hello.greetingResponse().greeting;
     let dayOfWeek = yyz_hello.greetingResponse().dayOfWeek;
 
-    it('gets the date from calling getGreeting ', () => {
+    it('gets the date from calling getGreeting', () => {
       expect(date).toBeDefined();
     });
 
-    it('gets the hour from calling getGreeting ', () => {
+    it('gets the hour from calling getGreeting', () => {
       expect(hour).toBeDefined();
     });
 
-    it('gets the greeting from calling getGreeting ', () => {
+    it('gets the greeting from calling getGreeting', () => {
       expect(greeting).toBeDefined();
     });
 
-    it('gets the day from calling getGreeting ', () => {
+    it('gets the day from calling getGreeting', () => {
       expect(dayOfWeek).toBeDefined();
     });
 
@@ -197,7 +197,139 @@ describe('routes module', () => {
     });
 
     it('gets a JSON response', () => {
+      res._getData();
       expect(yyz_hello.checkIfJSON(res._getData())).toBe(true);
+    });
+  });
+
+  describe('GET /api/hello/dayOfWeek', () => {
+
+    let date = yyz_hello.greetingResponse().date;
+    let hour = yyz_hello.greetingResponse().hour;
+    let greeting = yyz_hello.greetingResponse().greeting;
+    let dayOfWeek = yyz_hello.greetingResponse().dayOfWeek;
+
+    it('gets the date from calling getGreeting', () => {
+      expect(date).toBeDefined();
+    });
+
+    it('gets the hour from calling getGreeting', () => {
+      expect(hour).toBeDefined();
+    });
+
+    it('gets the greeting from calling getGreeting', () => {
+      expect(greeting).toBeDefined();
+    });
+
+    it('gets the day from calling getGreeting', () => {
+      expect(dayOfWeek).toBeDefined();
+    });
+
+    describe('gets day from request path', () => {
+      let path = '/api/hello/day';
+      let day = yyz_hello.capitalizeFirstLetter(path.split("/hello/")[1]);
+      it('gets the day from /api/hello/monday path', () => {
+        if (path == '/api/hello/monday' ) {
+          expect(day).toBe('Monday');
+        }
+      });
+
+      it('gets the day from /api/hello/tuesday', () => {
+        if (path == '/api/hello/tuesday' ) {
+          expect(day).toBe('Tuesday');
+        }
+      });
+
+      it('gets the day from /api/hello/wednesday', () => {
+        if (path == '/api/hello/wednesday' ) {
+          expect(day).toBe('Wednesday');
+        }
+      });
+
+      it('gets the day from /api/hello/thursday', () => {
+        if (path == '/api/hello/thursday' ) {
+          expect(day).toBe('Thursday');
+        }
+      });
+
+      it('gets the day from /api/hello/friday', () => {
+        if (path == '/api/hello/friday' ) {
+          expect(day).toBe('Friday');
+        }
+      });
+
+      it('gets the day from /api/hello/saturday', () => {
+        if (path == '/api/hello/saturday' ) {
+          expect(day).toBe('Saturday');
+        }
+      });
+
+      it('gets the day from /api/hello/sunday', () => {
+        if (path == '/api/hello/sunday' ) {
+          expect(day).toBe('Sunday');
+        }
+      });
+    });
+   
+    describe('/api/hello/monday', ()=> { 
+      var req  = httpMocks.createRequest({
+        method: 'GET',
+        port: '5000',
+        url: '/api/hello/monday',
+      });
+
+      var res = httpMocks.createResponse({
+        eventEmitter: require('events').EventEmitter
+      });
+
+      it('responds with a greeting and day', function(done) {
+        res.on('end', function() {
+          let day = yyz_hello.capitalizeFirstLetter(req.path.split("/hello/")[1]);
+          expect(res._getData()).toBe(greeting + ' ' + yyz_hello.capitalizeFirstLetter(day));
+          done();
+        });
+
+        yyz_hello.getDayGreeting(req,res);
+      });
+
+      it('gets a 200 status', () => {
+        expect(res.statusCode).toBe(200);
+      });
+
+      it('gets a JSON response', () => {
+        expect(yyz_hello.checkIfJSON(res._getData())).toBe(false);
+      });
+    });
+    describe('/api/hello/monday?json', ()=> { 
+      var req  = httpMocks.createRequest({
+        method: 'GET',
+        port: '5000',
+        url: '/api/hello/monday',
+        query: 'json'
+      });
+
+      var res = httpMocks.createResponse({
+        eventEmitter: require('events').EventEmitter
+      });
+
+      it('responds with a greeting and day', function(done) {
+        res.on('end', function() {
+          let day = yyz_hello.capitalizeFirstLetter(req.path.split("/hello/")[1]);
+          expect(res._getData()).toEqual({'greeting':greeting, 'dayOfWeek': yyz_hello.capitalizeFirstLetter(day)});
+          done();
+        });
+
+        yyz_hello.getDayGreeting(req,res);
+      });
+
+      it('gets a 200 status', () => {
+        expect(res.statusCode).toBe(200);
+      });
+
+      it('gets a JSON response', () => {
+        res._getData();
+        expect(yyz_hello.checkIfJSON(res._getData())).toBe(true);
+      });
     });
   });
 });
