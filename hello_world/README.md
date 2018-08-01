@@ -8,7 +8,6 @@ API Routes:
 Tools:
 * NodeJS
 * Express
-* React
 
 To run this locally:
 1. Git clone the repository
