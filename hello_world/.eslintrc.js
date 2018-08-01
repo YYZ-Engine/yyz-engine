@@ -13,7 +13,9 @@ module.exports = {
         "module": false,
         "describe": false,
         "it": false,
-        "expect": false
+        "expect": false,
+        "process": false,
+        "__dirname": false
     },
     "rules": {
         "indent": [
