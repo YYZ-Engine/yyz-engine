@@ -38,8 +38,10 @@ const getLocation = (req, res) => {
           res.send("error");
         }
         var countryResult = ({"country": results.countryName});
-        if ('json' in req.query) {
-          res.json(countryResult);
+        if (JSON.stringify(req.query).match(/json/g)) {
+          var data = JSON.parse(JSON.stringify({countryResult}));
+          res.setHeader('Content-Type', 'application/json');
+          res.send(data);
         } else {
           res.send(results.countryName);
         }
