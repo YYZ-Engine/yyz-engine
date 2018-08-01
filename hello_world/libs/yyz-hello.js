@@ -3,7 +3,6 @@ const ip2countrify = require( 'ip2countrify');
 const path = require('path');
 
 const checkIfJSON = (x) => {
-
   if (typeof x == 'object') {
     // test if x can be turned into a JSON string
     try { x = JSON.stringify(x); }
@@ -11,7 +10,6 @@ const checkIfJSON = (x) => {
       return false;
     }
   }
-
   if (typeof x == 'string') {
     // test if it can get the JS value or object from x
     try { x = JSON.parse(x); }
@@ -19,11 +17,9 @@ const checkIfJSON = (x) => {
       return false;
     }
   }
-
   if (typeof x != 'object') {
     return false;
   }
-
   return true;
 };
 
@@ -75,11 +71,11 @@ const getGreeting = (req, res) => {
   greetingResponse();
   var greeting = greetingResponse().greeting;
   var day = greetingResponse().dayOfWeek;
-  if ('json' in req.query) {
-    var data = ({
+  if (JSON.stringify(req.query).match(/json/g)) {
+    var data = JSON.parse(JSON.stringify({
       'greeting': greeting,
       'dayOfWeek': day
-    });
+    }));
     res.setHeader('Content-Type', 'application/json');
     res.send(data);
   } else {
