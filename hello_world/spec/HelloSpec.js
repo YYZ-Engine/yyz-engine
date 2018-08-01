@@ -4,15 +4,15 @@ const yyz_hello = require('../libs/yyz-hello');
 describe('helper functions', () => {
 
   describe('capitalizeFirstLetter(string)', () => {
-    let day = 'monday'
+    var day = 'monday'
 
-    let capitalizedString = yyz_hello.capitalizeFirstLetter(day);
+    var capitalizedString = yyz_hello.capitalizeFirstLetter(day);
 
     it('passes a random weekday string as the argument', () => {
       expect(day).toBeDefined();
     });
 
-    it('can capitalize the first letter', () => {
+    it('can capitalize the first varter', () => {
       expect(day.charAt(0).toUpperCase()).toBe('M');
     });
 
@@ -20,18 +20,18 @@ describe('helper functions', () => {
       expect(day.slice(1)).toBe('onday');
     });
 
-    it('can return a string with the first letter capitalized', () => {
+    it('can return a string with the first varter capitalized', () => {
       expect(capitalizedString).toBe('Monday');
     });
   });
 
   describe('checkIfJSON(x)', () => {
-    let x = yyz_hello.checkIfJSON('x');
-    let y = yyz_hello.checkIfJSON({'apple':'orange'});
-    let z = yyz_hello.checkIfJSON({'apple':3});
-    let a = yyz_hello.checkIfJSON({});
-    let b = yyz_hello.checkIfJSON('');
-    let c = yyz_hello.checkIfJSON();
+    var x = yyz_hello.checkIfJSON('x');
+    var y = yyz_hello.checkIfJSON({'apple':'orange'});
+    var z = yyz_hello.checkIfJSON({'apple':3});
+    var a = yyz_hello.checkIfJSON({});
+    var b = yyz_hello.checkIfJSON('');
+    var c = yyz_hello.checkIfJSON();
 
     it('checks if "x" is JSON', () => {
       expect(x).toBe(false);
@@ -61,8 +61,8 @@ describe('helper functions', () => {
 
   describe('greetingResponse()', () => {
     yyz_hello.greetingResponse();
-    let date = yyz_hello.greetingResponse().date;
-    let hour = yyz_hello.greetingResponse().hour;
+    var date = yyz_hello.greetingResponse().date;
+    var hour = yyz_hello.greetingResponse().hour;
 
     it('has an date', () => {
       expect(date).toBeDefined();
@@ -73,7 +73,7 @@ describe('helper functions', () => {
     });
 
     it('has a greeting', () => {
-      let greeting = '';
+      var greeting = '';
       if (hour > 3 && hour < 12) {
         greeting = 'Good Morning'
       } else if (hour >= 12 && hour < 20) {
@@ -98,10 +98,10 @@ describe('routes module', () => {
 
   describe('GET /api/hello', () => {
 
-    let date = yyz_hello.greetingResponse().date;
-    let hour = yyz_hello.greetingResponse().hour;
-    let greeting = yyz_hello.greetingResponse().greeting;
-    let dayOfWeek = yyz_hello.greetingResponse().dayOfWeek;
+    var date = yyz_hello.greetingResponse().date;
+    var hour = yyz_hello.greetingResponse().hour;
+    var greeting = yyz_hello.greetingResponse().greeting;
+    var dayOfWeek = yyz_hello.greetingResponse().dayOfWeek;
 
     it('gets the date from calling getGreeting', () => {
       expect(date).toBeDefined();
@@ -150,10 +150,10 @@ describe('routes module', () => {
 
   describe('GET /api/hello?json', () => {
 
-    let date = yyz_hello.greetingResponse().date;
-    let hour = yyz_hello.greetingResponse().hour;
-    let greeting = yyz_hello.greetingResponse().greeting;
-    let dayOfWeek = yyz_hello.greetingResponse().dayOfWeek;
+    var date = yyz_hello.greetingResponse().date;
+    var hour = yyz_hello.greetingResponse().hour;
+    var greeting = yyz_hello.greetingResponse().greeting;
+    var dayOfWeek = yyz_hello.greetingResponse().dayOfWeek;
 
     it('gets the date from calling getGreeting', () => {
       expect(date).toBeDefined();
@@ -182,14 +182,15 @@ describe('routes module', () => {
       eventEmitter: require('events').EventEmitter
     });
 
-    it('responds with a greeting and day', function(done) {
-      res.on('end', function() {
-        var response = ({'greeting': greeting, 'dayOfWeek': dayOfWeek});
-        expect(res._getData()).toEqual(response);
-        done();
-      });
+    yyz_hello.getGreeting(req,res);
+    var data = res._getData();
 
-      yyz_hello.getGreeting(req,res);
+    it('responds with a greeting', () => {
+      expect(data.greeting).toEqual(greeting);
+    });
+
+    it('responds with a day', () => {
+      expect(data.dayOfWeek).toEqual(dayOfWeek);
     });
 
     it('gets a 200 status', () => {
@@ -197,17 +198,18 @@ describe('routes module', () => {
     });
 
     it('gets a JSON response', () => {
-      res._getData();
-      expect(yyz_hello.checkIfJSON(res._getData())).toBe(true);
+      var isJSON = yyz_hello.checkIfJSON(data);
+      expect(isJSON).toBe(true);
     });
+
   });
 
   describe('GET /api/hello/dayOfWeek', () => {
 
-    let date = yyz_hello.greetingResponse().date;
-    let hour = yyz_hello.greetingResponse().hour;
-    let greeting = yyz_hello.greetingResponse().greeting;
-    let dayOfWeek = yyz_hello.greetingResponse().dayOfWeek;
+    var date = yyz_hello.greetingResponse().date;
+    var hour = yyz_hello.greetingResponse().hour;
+    var greeting = yyz_hello.greetingResponse().greeting;
+    var dayOfWeek = yyz_hello.greetingResponse().dayOfWeek;
 
     it('gets the date from calling getGreeting', () => {
       expect(date).toBeDefined();
@@ -226,8 +228,8 @@ describe('routes module', () => {
     });
 
     describe('gets day from request path', () => {
-      let path = '/api/hello/day';
-      let day = yyz_hello.capitalizeFirstLetter(path.split("/hello/")[1]);
+      var path = '/api/hello/day';
+      var day = yyz_hello.capitalizeFirstLetter(path.split("/hello/")[1]);
       it('gets the day from /api/hello/monday path', () => {
         if (path == '/api/hello/monday' ) {
           expect(day).toBe('Monday');
@@ -282,14 +284,12 @@ describe('routes module', () => {
         eventEmitter: require('events').EventEmitter
       });
 
-      it('responds with a greeting and day', function(done) {
-        res.on('end', function() {
-          let day = yyz_hello.capitalizeFirstLetter(req.path.split("/hello/")[1]);
-          expect(res._getData()).toBe(greeting + ' ' + yyz_hello.capitalizeFirstLetter(day));
-          done();
-        });
+      yyz_hello.getDayGreeting(req,res);
+      var data = res._getData();
 
-        yyz_hello.getDayGreeting(req,res);
+      it('responds with a greeting and day', () => {
+        var day = yyz_hello.capitalizeFirstLetter(req.path.split("/hello/")[1]);
+        expect(res._getData()).toBe(greeting + ' ' + yyz_hello.capitalizeFirstLetter(day));
       });
 
       it('gets a 200 status', () => {
@@ -297,9 +297,10 @@ describe('routes module', () => {
       });
 
       it('gets a JSON response', () => {
-        expect(yyz_hello.checkIfJSON(res._getData())).toBe(false);
+        expect(yyz_hello.checkIfJSON(data)).toBe(false);
       });
     });
+
     describe('/api/hello/monday?json', ()=> { 
       var req  = httpMocks.createRequest({
         method: 'GET',
@@ -312,14 +313,16 @@ describe('routes module', () => {
         eventEmitter: require('events').EventEmitter
       });
 
-      it('responds with a greeting and day', function(done) {
-        res.on('end', function() {
-          let day = yyz_hello.capitalizeFirstLetter(req.path.split("/hello/")[1]);
-          expect(res._getData()).toEqual({'greeting':greeting, 'dayOfWeek': yyz_hello.capitalizeFirstLetter(day)});
-          done();
-        });
+      yyz_hello.getDayGreeting(req,res);
+      var data = res._getData();
 
-        yyz_hello.getDayGreeting(req,res);
+      it('responds with a greeting', () => {
+        expect(data.greeting).toEqual(greeting);
+      });
+      
+       it('responds with a greeting', () => {
+        var day = yyz_hello.capitalizeFirstLetter(req.path.split("/hello/")[1]);
+        expect(data.dayOfWeek).toEqual(yyz_hello.capitalizeFirstLetter(day));
       });
 
       it('gets a 200 status', () => {
@@ -327,8 +330,9 @@ describe('routes module', () => {
       });
 
       it('gets a JSON response', () => {
-        res._getData();
-        expect(yyz_hello.checkIfJSON(res._getData())).toBe(true);
+        var data = res._getData();
+        var isJSON = yyz_hello.checkIfJSON(data); 
+        expect(isJSON).toBe(true);
       });
     });
   });
