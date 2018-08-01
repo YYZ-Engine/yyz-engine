@@ -1,25 +1,57 @@
-const request = require('request');
-const publicIp = require('public-ip');
-const ip2countrify = require( 'ip2countrify');
-/*
-let country = '';
+const httpMocks = require('node-mocks-http');
+const yyz_hello = require('../libs/yyz-hello');
 
-publicIp.v6().then(ip => {
-  ip2countrify.lookup(
-    ip,
-    function( ip, results, error ) {
-      if ( error ) {
-        return console.warn( 'An error has occurred: ' + error );
-      }
-      country = results.countryName
-    }
-  );
-});
-var worldResponse = {'country': country};
+describe('get location module', () => {
+  describe('/api/world', () => {
+    var req  = httpMocks.createRequest({
+      method: 'GET',
+      port: '5000',
+      url: '/api/world',
+    });
 
-it("should respond with the user's country", function(done) {
-  request("http://localhost:5000/api/world?json", function(error, response, body){
-    expect(body).toEqual(JSON.stringify(worldResponse));
-    done();
+    var res = httpMocks.createResponse({
+      eventEmitter: require('events').EventEmitter
+    });
+
+    it('should respond with the country of the user', function(done) {
+      res.on('end', function() {
+        expect(res._getData()).toBeDefined();
+        done();
+      });
+
+      yyz_hello.getLocation(req,res);
+    });
+
+    it('gets a JSON response', () => {
+      res._getData();
+      expect(yyz_hello.checkIfJSON(res._getData())).toBe(false);
+    });
   });
-});*/
+
+  describe('/api/world?json', () => {
+    var req  = httpMocks.createRequest({
+      method: 'GET',
+      port: '5000',
+      url: '/api/world',
+      query: 'json'
+    });
+
+    var res = httpMocks.createResponse({
+      eventEmitter: require('events').EventEmitter
+    });
+
+    it('should respond with the country of the user', function(done) {
+      res.on('end', function() {
+        expect(res._getData()).toBeDefined();
+        done();
+      });
+
+      yyz_hello.getLocation(req,res);
+    });
+
+    it('gets a JSON response', () => {
+      res._getData();
+      expect(yyz_hello.checkIfJSON(res._getData())).toBe(true);
+    });
+  });
+});
