@@ -1,6 +1,5 @@
 const publicIp = require('public-ip');
 const ip2countrify = require( 'ip2countrify');
-const path = require('path');
 
 const checkIfJSON = (x) => {
 	if (typeof x == 'object') {
@@ -33,7 +32,6 @@ const getLocation = (req, res) => {
 			ip,
 			function( ip, results, error ) {
 				if (error) {
-					console.warn( 'An error has occurred: ' + error );
 					res.send('error');
 				}
 				var countryResult = ({'country': results.countryName});
