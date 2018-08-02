@@ -42,16 +42,14 @@ const getLocation = (req, res) => {
 				if (error) {
 					res.send('error');
 				}
-				var countryResult = ({'country': results.countryName});
+				var countryResult = results.countryName;
+				var data = countryResult;
 				if (JSON.stringify(req.query).match(/json/g)) {
-					var data = countryResult;
+				  data = ({'country': countryResult});
 					res.setHeader('Content-Type', 'application/json');
-					res.json(data);
-					getRequestHistory(req);
-				} else {
-					res.send(results.countryName);
-					getRequestHistory(req);
-				}
+				} 
+				res.send(data);
+				getRequestHistory(req);
 			}
 		);
 	});
@@ -80,35 +78,31 @@ const getGreeting = (req, res) => {
 	greetingResponse();
 	var greeting = greetingResponse().greeting;
 	var day = greetingResponse().dayOfWeek;
+	var data = greeting + ' ' + day;
 	if (JSON.stringify(req.query).match(/json/g)) {
-		var data = JSON.parse(JSON.stringify({
-			'greeting': greeting,
-			'dayOfWeek': day
-		}));
+    data = JSON.parse(JSON.stringify({
+      'greeting': greeting,
+      'dayOfWeek': day
+    }));
 		res.setHeader('Content-Type', 'application/json');
-		res.send(data);
-		getRequestHistory(req);
-	} else {
-		res.send(greeting + ' ' + day);
-		getRequestHistory(req);
 	}
+	res.send(data);
+	getRequestHistory(req);
 };
 
 const getDayGreeting = (req, res) => {
 	greetingResponse();
 	let day = capitalizeFirstLetter(req.path.split('/hello/')[1]);
+  var data = greetingResponse().greeting + ' ' + day;
 	if (JSON.stringify(req.query).match(/json/g)) {
-		var data = JSON.parse(JSON.stringify({
-			'greeting': greetingResponse().greeting, 
-			'dayOfWeek': day
-		}));
+    data = JSON.parse(JSON.stringify({
+      'greeting': greetingResponse().greeting, 
+      'dayOfWeek': day
+    }));
 		res.setHeader('Content-Type', 'application/json');
-		res.send(data);
-		getRequestHistory(req);
-	} else {
-		res.send(greetingResponse().greeting + ' ' + day);
-		getRequestHistory(req);
 	}
+	res.send(data);
+	getRequestHistory(req);
 };
 
 module.exports = {
