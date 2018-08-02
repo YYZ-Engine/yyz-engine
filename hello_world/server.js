@@ -20,6 +20,11 @@ app.get('/api/world', (req, res) => {
 	yyz_hello.getLocation(req, res);
 });
 
+app.get('/api/requests', (req, res) => {
+  var requests = yyz_hello.getRequestHistory(req);
+  res.send(requests);
+});
+
 if (process.env.NODE_ENV === 'production') {
 	// Serve any static files
 	app.use(express.static(path.join(__dirname, 'client/build')));
