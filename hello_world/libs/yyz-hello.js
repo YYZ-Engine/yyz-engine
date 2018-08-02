@@ -29,9 +29,9 @@ const capitalizeFirstLetter = (string) => {
 var requests = ({'requests':[]});
 
 const getRequestHistory = (req) => {
-  var date = new Date;
-  requests['requests'].push({'timestamp': date, 'requestURL': req.url});
-  return requests;
+	var date = new Date;
+	requests['requests'].push({'timestamp': date, 'requestURL': req.url});
+	return requests;
 };
 
 const getLocation = (req, res) => {
@@ -47,8 +47,10 @@ const getLocation = (req, res) => {
 					var data = countryResult;
 					res.setHeader('Content-Type', 'application/json');
 					res.json(data);
+					getRequestHistory(req);
 				} else {
 					res.send(results.countryName);
+					getRequestHistory(req);
 				}
 			}
 		);
@@ -85,8 +87,10 @@ const getGreeting = (req, res) => {
 		}));
 		res.setHeader('Content-Type', 'application/json');
 		res.send(data);
+		getRequestHistory(req);
 	} else {
 		res.send(greeting + ' ' + day);
+		getRequestHistory(req);
 	}
 };
 
@@ -100,14 +104,17 @@ const getDayGreeting = (req, res) => {
 		}));
 		res.setHeader('Content-Type', 'application/json');
 		res.send(data);
+		getRequestHistory(req);
 	} else {
 		res.send(greetingResponse().greeting + ' ' + day);
+		getRequestHistory(req);
 	}
 };
 
 module.exports = {
 	checkIfJSON: checkIfJSON,
 	capitalizeFirstLetter: capitalizeFirstLetter,
+	getRequestHistory: getRequestHistory,
 	greetingResponse: greetingResponse,
 	getLocation: getLocation,
 	getGreeting: getGreeting,
