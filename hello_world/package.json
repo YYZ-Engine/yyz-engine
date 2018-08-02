@@ -9,6 +9,7 @@
   "license": "MIT",
   "main": "server.js",
   "scripts": {
+    "test": "jasmine",
     "client": "cd client && yarn start",
     "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
@@ -18,10 +19,13 @@
   "dependencies": {
     "express": "^4.16.2",
     "ip2countrify": "^0.2.0",
-    "public-ip": "^2.4.0"
+    "public-ip": "^2.4.0",
+    "request": "^2.87.0"
   },
   "devDependencies": {
     "concurrently": "^3.5.0",
+    "jasmine": "^3.1.0",
+    "node-mocks-http": "^1.7.0",
     "nodemon": "^1.17.4"
   },
   "repository": {
