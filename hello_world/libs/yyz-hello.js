@@ -84,7 +84,6 @@ const getGreeting = (req, res) => {
 
 const getDayGreeting = (req, res) => {
 	greetingResponse();
-	let days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 	let day = capitalizeFirstLetter(req.path.split('/hello/')[1]);
 	if (JSON.stringify(req.query).match(/json/g)) {
 		var data = JSON.parse(JSON.stringify({
