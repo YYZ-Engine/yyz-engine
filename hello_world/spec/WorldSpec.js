@@ -29,6 +29,10 @@ describe('get location module', () => {
 			});
 		};
 		getLocation(req,res);
+
+		it('gets a 200 status', () => {
+			expect(res.statusCode).toBe(200);
+		});
 	});
 
 	describe('/api/world?json', () => {
@@ -59,5 +63,9 @@ describe('get location module', () => {
 		};
 
 		getLocation(req,res);
+
+		it('gets a 200 status', () => {
+			expect(res.statusCode).toBe(200);
+		});
 	});
 });
