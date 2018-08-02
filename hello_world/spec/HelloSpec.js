@@ -12,7 +12,7 @@ describe('helper functions', () => {
       expect(day).toBeDefined();
     });
 
-    it('can capitalize the first varter', () => {
+    it('can capitalize the first letter', () => {
       expect(day.charAt(0).toUpperCase()).toBe('M');
     });
 
@@ -20,7 +20,7 @@ describe('helper functions', () => {
       expect(day.slice(1)).toBe('onday');
     });
 
-    it('can return a string with the first varter capitalized', () => {
+    it('can return a string with the first letter capitalized', () => {
       expect(capitalizedString).toBe('Monday');
     });
   });
