@@ -1,6 +1,14 @@
 const publicIp = require('public-ip');
 const ip2countrify = require('ip2countrify');
 
+var requests = ({'requests':[]});
+
+const getRequestHistory = (req) => {
+	var date = new Date;
+	requests['requests'].push({'timestamp': date, 'requestURL': req.url});
+	return requests;
+};
+
 const checkIfJSON = (x) => {
 	if (typeof x == 'object') {
 		// test if x can be turned into a JSON string
@@ -39,8 +47,10 @@ const getLocation = (req, res) => {
 					var data = countryResult;
 					res.setHeader('Content-Type', 'application/json');
 					res.json(data);
+					getRequestHistory(req);
 				} else {
 					res.send(results.countryName);
+					getRequestHistory(req);
 				}
 			}
 		);
@@ -77,8 +87,10 @@ const getGreeting = (req, res) => {
 		}));
 		res.setHeader('Content-Type', 'application/json');
 		res.send(data);
+		getRequestHistory(req);
 	} else {
 		res.send(greeting + ' ' + day);
+		getRequestHistory(req);
 	}
 };
 
@@ -92,12 +104,15 @@ const getDayGreeting = (req, res) => {
 		}));
 		res.setHeader('Content-Type', 'application/json');
 		res.send(data);
+		getRequestHistory(req);
 	} else {
 		res.send(greetingResponse().greeting + ' ' + day);
+		getRequestHistory(req);
 	}
 };
 
 module.exports = {
+	getRequestHistory: getRequestHistory,
 	checkIfJSON: checkIfJSON,
 	capitalizeFirstLetter: capitalizeFirstLetter,
 	greetingResponse: greetingResponse,
