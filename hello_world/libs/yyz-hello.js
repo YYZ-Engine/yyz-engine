@@ -26,6 +26,14 @@ const capitalizeFirstLetter = (string) => {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
+var requests = ({'requests':[]});
+
+const getRequestHistory = (req) => {
+  var date = new Date;
+  requests['requests'].push({'timestamp': date, 'requestURL': req.url});
+  return requests;
+};
+
 const getLocation = (req, res) => {
 	publicIp.v6().then(ip => {
 		ip2countrify.lookup(
