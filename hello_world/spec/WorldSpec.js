@@ -1,5 +1,4 @@
 const httpMocks = require('node-mocks-http');
-const yyz_hello = require('../libs/yyz-hello');
 const ip2countrify = require('ip2countrify');
 const publicIp = require('public-ip');
 
@@ -15,7 +14,7 @@ describe('get location module', () => {
 			eventEmitter: require('events').EventEmitter
 		});
 
-		yyz_hello.getLocation = (req,res) => {
+		const getLocation = (req,res) => {
 			it('get location from IPv6', function( done ) {
 				publicIp.v6().then(ip => {
 					ip2countrify.lookup(
@@ -29,7 +28,7 @@ describe('get location module', () => {
 				});
 			});
 		};
-		yyz_hello.getLocation(req,res);
+		getLocation(req,res);
 	});
 
 	describe('/api/world?json', () => {
@@ -44,7 +43,7 @@ describe('get location module', () => {
 			eventEmitter: require('events').EventEmitter
 		});
 
-		yyz_hello.getLocation = (req,res) => {
+		const getLocation = (req,res) => {
 			it('get location from IPv6', function( done ) {
 				publicIp.v6().then(ip => {
 					ip2countrify.lookup(
@@ -59,6 +58,6 @@ describe('get location module', () => {
 			});
 		};
 
-		yyz_hello.getLocation(req,res);
+		getLocation(req,res);
 	});
 });
