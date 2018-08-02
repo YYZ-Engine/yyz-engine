@@ -26,35 +26,35 @@ describe('helper functions', () => {
   });
 
   describe('checkIfJSON(x)', () => {
-    var x = yyz_hello.checkIfJSON('x');
-    var y = yyz_hello.checkIfJSON({'apple':'orange'});
-    var z = yyz_hello.checkIfJSON({'apple':3});
-    var a = yyz_hello.checkIfJSON({});
-    var b = yyz_hello.checkIfJSON('');
-    var c = yyz_hello.checkIfJSON();
+    var string = yyz_hello.checkIfJSON('x');
+    var obj = yyz_hello.checkIfJSON({'apple':'orange'});
+    var obj2 = yyz_hello.checkIfJSON({'apple':3});
+    var obj3 = yyz_hello.checkIfJSON({});
+    var emptyString = yyz_hello.checkIfJSON('');
+    var noValue = yyz_hello.checkIfJSON();
 
-    it('checks if "x" is JSON', () => {
-      expect(x).toBe(false);
+    it('checks if string is JSON', () => {
+      expect(string).toBe(false);
     });
 
-    it('checks if "y" is JSON', () => {
-      expect(y).toBe(true);
+    it('checks if object is JSON', () => {
+      expect(obj).toBe(true);
     });
 
-    it('checks if "z" is JSON', () => {
-      expect(z).toBe(true);
+    it('checks if object 2 is JSON', () => {
+      expect(obj2).toBe(true);
     });
 
-    it('checks if "a" is JSON', () => {
-      expect(a).toBe(true);
+    it('checks if object 3 is JSON', () => {
+      expect(obj3).toBe(true);
     });
 
-    it('checks if "b" is JSON', () => {
-      expect(b).toBe(false);
+    it('checks if empty string is JSON', () => {
+      expect(emptyString).toBe(false);
     });
 
-    it('checks if "c" is JSON', () => {
-      expect(c).toBe(false);
+    it('checks if no value is JSON', () => {
+      expect(noValue).toBe(false);
     });
 
   });
@@ -198,8 +198,7 @@ describe('routes module', () => {
     });
 
     it('gets a JSON response', () => {
-      var isJSON = yyz_hello.checkIfJSON(data);
-      expect(isJSON).toBe(true);
+      expect(yyz_hello.checkIfJSON(data)).toBe(true);
     });
 
   });
@@ -330,9 +329,7 @@ describe('routes module', () => {
       });
 
       it('gets a JSON response', () => {
-        var data = res._getData();
-        var isJSON = yyz_hello.checkIfJSON(data); 
-        expect(isJSON).toBe(true);
+        expect(yyz_hello.checkIfJSON(data)).toBe(true);
       });
     });
   });
