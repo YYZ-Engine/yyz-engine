@@ -10,10 +10,7 @@
   "main": "server.js",
   "scripts": {
     "test": "jasmine",
-    "client": "cd client && yarn start",
     "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "dev:server": "cd client && yarn build && cd .. && yarn start",
     "start": "node server.js"
   },
   "dependencies": {
@@ -23,7 +20,6 @@
     "request": "^2.87.0"
   },
   "devDependencies": {
-    "concurrently": "^3.5.0",
     "eslint": "^5.2.0",
     "jasmine": "^3.1.0",
     "node-mocks-http": "^1.7.0",
