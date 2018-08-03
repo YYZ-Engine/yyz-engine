@@ -45,7 +45,7 @@ const getLocation = (req, res) => {
 				var countryResult = results.countryName;
 				var data = countryResult;
 				if (JSON.stringify(req.query).match(/json/g)) {
-				  data = ({'country': countryResult});
+					data = ({'country': countryResult});
 					res.setHeader('Content-Type', 'application/json');
 				} 
 				res.send(data);
@@ -80,10 +80,10 @@ const getGreeting = (req, res) => {
 	var day = greetingResponse().dayOfWeek;
 	var data = greeting + ' ' + day;
 	if (JSON.stringify(req.query).match(/json/g)) {
-    data = JSON.parse(JSON.stringify({
-      'greeting': greeting,
-      'dayOfWeek': day
-    }));
+		data = JSON.parse(JSON.stringify({
+			'greeting': greeting,
+			'dayOfWeek': day
+		}));
 		res.setHeader('Content-Type', 'application/json');
 	}
 	res.send(data);
@@ -93,12 +93,12 @@ const getGreeting = (req, res) => {
 const getDayGreeting = (req, res) => {
 	greetingResponse();
 	let day = capitalizeFirstLetter(req.path.split('/hello/')[1]);
-  var data = greetingResponse().greeting + ' ' + day;
+	var data = greetingResponse().greeting + ' ' + day;
 	if (JSON.stringify(req.query).match(/json/g)) {
-    data = JSON.parse(JSON.stringify({
-      'greeting': greetingResponse().greeting, 
-      'dayOfWeek': day
-    }));
+		data = JSON.parse(JSON.stringify({
+			'greeting': greetingResponse().greeting, 
+			'dayOfWeek': day
+		}));
 		res.setHeader('Content-Type', 'application/json');
 	}
 	res.send(data);
