@@ -1,5 +1,7 @@
 # NodeJS API Hello World 
 
+[![Build Status](https://travis-ci.org/YYZ-Engine/yyz-engine.svg?branch=master)](https://travis-ci.org/YYZ-Engine/yyz-engine)
+
 API Routes: 
 * [http://localhost:5000/api/hello](Hello) returns a greeting based on the local machine
 * [http://localhost:5000/api/hello/monday](Hello/[day of the week]) returns a greeting based on the local machine
