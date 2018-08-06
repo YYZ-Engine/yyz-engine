@@ -26,6 +26,14 @@ const capitalizeFirstLetter = (string) => {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
+var requests = ({'requests':[]});
+
+const getRequestHistory = (req) => {
+	var date = new Date;
+	requests['requests'].push({'timestamp': date, 'requestURL': req.url});
+	return requests;
+};
+
 const getLocation = (req, res) => {
 	publicIp.v6().then(ip => {
 		ip2countrify.lookup(
@@ -34,14 +42,14 @@ const getLocation = (req, res) => {
 				if (error) {
 					res.send('error');
 				}
-				var countryResult = ({'country': results.countryName});
+				var countryResult = results.countryName;
+				var data = countryResult;
 				if (JSON.stringify(req.query).match(/json/g)) {
-					var data = countryResult;
+					data = ({'country': countryResult});
 					res.setHeader('Content-Type', 'application/json');
-					res.json(data);
-				} else {
-					res.send(results.countryName);
-				}
+				} 
+				res.send(data);
+				getRequestHistory(req);
 			}
 		);
 	});
@@ -70,37 +78,37 @@ const getGreeting = (req, res) => {
 	greetingResponse();
 	var greeting = greetingResponse().greeting;
 	var day = greetingResponse().dayOfWeek;
+	var data = greeting + ' ' + day;
 	if (JSON.stringify(req.query).match(/json/g)) {
-		var data = JSON.parse(JSON.stringify({
+		data = JSON.parse(JSON.stringify({
 			'greeting': greeting,
 			'dayOfWeek': day
 		}));
 		res.setHeader('Content-Type', 'application/json');
-		res.send(data);
-	} else {
-		res.send(greeting + ' ' + day);
 	}
+	res.send(data);
+	getRequestHistory(req);
 };
 
 const getDayGreeting = (req, res) => {
 	greetingResponse();
-	let days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 	let day = capitalizeFirstLetter(req.path.split('/hello/')[1]);
+	var data = greetingResponse().greeting + ' ' + day;
 	if (JSON.stringify(req.query).match(/json/g)) {
-		var data = JSON.parse(JSON.stringify({
+		data = JSON.parse(JSON.stringify({
 			'greeting': greetingResponse().greeting, 
 			'dayOfWeek': day
 		}));
 		res.setHeader('Content-Type', 'application/json');
-		res.send(data);
-	} else {
-		res.send(greetingResponse().greeting + ' ' + day);
 	}
+	res.send(data);
+	getRequestHistory(req);
 };
 
 module.exports = {
 	checkIfJSON: checkIfJSON,
 	capitalizeFirstLetter: capitalizeFirstLetter,
+	getRequestHistory: getRequestHistory,
 	greetingResponse: greetingResponse,
 	getLocation: getLocation,
 	getGreeting: getGreeting,
