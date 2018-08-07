@@ -10,10 +10,11 @@
   "main": "server.js",
   "scripts": {
     "test": "jasmine",
-    "client": "cd client && yarn start",
+    "lint": "./node_modules/.bin/eslint server.js --fix && ./node_modules/.bin/eslint spec --fix && ./node_modules/.bin/eslint libs --fix && ./node_modules/.bin/eslint client/src --fix",
+    "client": "cd client && npm install && npm start",
     "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "dev:server": "cd client && yarn build && cd .. && yarn start",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "dev:server": "cd client && npm install  && cd .. && npm start",
     "start": "node server.js"
   },
   "dependencies": {
