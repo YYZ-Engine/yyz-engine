@@ -12,8 +12,6 @@ class App extends Component {
         <header className='App-header'>
           <h1 className='App-title'>YYZ Engine Hello World</h1>
         </header>
-        <div className='App-intro'>
-          <p>Welcome to YYZ Engine Hello World app, where you can get a custom greeting, or get your location.</p>
         <Router>
           <Switch>
             <Route path='/' exact={true} component={Home} />
@@ -21,7 +19,6 @@ class App extends Component {
             <Route path='/world' component={World} />
           </Switch>
         </Router>
-        </div>
       </div>
     );
   }
