@@ -1,15 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
+import React, {Component} from 'react';
+import './App.css';
 
-const Home = () => (
-  <header>
-    <nav>
-      <ul>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/hello'>Hello</Link></li>
-        <li><Link to='/world'>World</Link></li>
-      </ul>
-    </nav>
-  </header>
-);
-export default Home; 
+class Home extends Component {
+  render() {
+    return(
+      <div className='App-intro'>
+        <p>
+          Welcome to YYZ Engine Hello World app, where you can get a custom greeting, or get your location.
+        </p>
+      </div>
+    );
+  }
+}
+
+export default Home;
