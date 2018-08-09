@@ -1,26 +1,18 @@
 import React from 'react';
-import Hello from './Hello';
+import axios from 'axios';
+import getGreeting from './api/hello';
 import {shallow} from 'enzyme';
-import fetch from "isomorphic-fetch";
+
+jest.mock('axios');
 
 describe('renders response from Hello API call',() => {
-  const hello = new Hello();
-
-  test('status is 200', async() => {
-    const response = await fetch('http://localhost:5000/api/hello?json');
-    expect(response.status).toBe(200);
-  });
-
-  test('the data is defined', async() => {
-    const data = await hello.callHelloAPI();
-    expect(data).toBeDefined();
-  });
-
-  test('the API fails with an error', async() => {
-    try {
-      await hello.callHelloAPI();
-    } catch (e) {
-      expect(e).toBeDefined();
-    }
+  test('load a response', () => {
+    const response = {data: [{greeting: 'Good Morning', dayOfWeek: 'Monday'}]};
+    axios.get.mockResolvedValue(response);
+    return axios.get('api/hello?json').then(data=>{
+      expect(data).toBeDefined()
+      expect(data.greeting).toEqual(response.data.greeting)
+      expect(data.dayOfWeek).toEqual(response.data.dayOfWeek)
+    });
   });
 });
