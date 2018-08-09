@@ -19,6 +19,8 @@
   },
   "jest": {
     "verbose": true,
+    "setupTestFrameworkScriptFile": "<rootDir>src/setupTests.js",
+    "testEnvironment": "node",
     "testURL": "http://localhost/",
     "testPathIgnorePatterns": [
       "/node_modules/",
@@ -30,7 +32,20 @@
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less|scss|sass)$": "identity-obj-proxy"
-    }
+    },
+    "moduleFileExtensions": [
+      "web.ts",
+      "ts",
+      "web.tsx",
+      "tsx",
+      "web.js",
+      "js",
+      "web.jsx",
+      "jsx",
+      "json",
+      "node",
+      "mjs"
+    ]
   },
   "babel": {
     "plugins": [
@@ -77,6 +92,7 @@
     "babel-preset-flow": "^6.23.0",
     "babel-preset-stage-0": "^6.24.1",
     "enzyme": "^3.4.1",
+    "enzyme-adapter-react-15": "^1.0.6",
     "enzyme-adapter-react-16": "^1.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.4.2"
