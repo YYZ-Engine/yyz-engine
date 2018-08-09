@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import getGreeting from './api/hello';
-import {shallow} from 'enzyme';
 
 jest.mock('axios');
 
