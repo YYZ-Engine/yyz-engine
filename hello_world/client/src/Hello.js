@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { getGreeting } from './api/hello';
 import './App.css';
 
 class Hello extends Component {
@@ -9,16 +10,12 @@ class Hello extends Component {
     };
   };
   componentDidMount() {
-    this.callHelloAPI()
-      .then(res => this.setState({ response: res.greeting + ' ' + res.dayOfWeek }))
+    getGreeting()
+      .then(res => { 
+        this.setState({ response: res.data.greeting + ' ' + res.data.dayOfWeek })
+      })
       .catch(err => console.log(err));
   }
-  callHelloAPI = async () => {
-    const response = await fetch('api/hello?json');
-    const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
-    return body;
-  };
 
   render() {
       return (
