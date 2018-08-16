@@ -13,9 +13,7 @@ install:
   - npm install
 
 script:
-  - cd hello_world
-  - npm run lint
-  - npm run test
+  - cd hello_world && npm install && npm run lint && npm run test
   - NODE_ENV=development nodemon server.js
 
 branches:
