@@ -14,7 +14,7 @@ install:
 
 script:
   - cd hello_world && npm install && npm run lint && npm run test
-  - NODE_ENV=development nodemon hello_world/server.js
+  - NODE_ENV=development npm run start
 
 branches:
   only:
