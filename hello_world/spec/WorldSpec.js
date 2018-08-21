@@ -13,12 +13,9 @@ describe('get location module', () => {
       eventEmitter: require('events').EventEmitter
     });
 
-		it('responds with location', function( done ) {
-      res.on('end', function() {
-        expect(res._getData()).toBeDefined();
-        done();
-      });
+		it('responds with location', function () {
       yyz_hello.getLocation(req,res);
+      expect(res._getData()).toBeDefined();
     });
 	});
 	describe('/api/world?json', () => {
@@ -33,12 +30,9 @@ describe('get location module', () => {
       eventEmitter: require('events').EventEmitter
     });
 
-		it('responds with location', function( done ) {
-      res.on('end', function() {
-        expect(res._getData()).toBeDefined();
-        done();
-      });
+		it('responds with location', function () {
       yyz_hello.getLocation(req,res);
+      expect(res._getData()).toBeDefined();
     });
 	});
 });
