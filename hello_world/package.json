@@ -10,6 +10,7 @@
   "main": "server.js",
   "scripts": {
     "test": "jasmine",
+    "lint": "./node_modules/.bin/eslint server.js --fix && ./node_modules/.bin/eslint spec --fix && ./node_modules/.bin/eslint libs --fix",
     "client": "cd client && yarn start",
     "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",

@@ -1,63 +1,38 @@
 const httpMocks = require('node-mocks-http');
-const ip2countrify = require('ip2countrify');
-const publicIp = require('public-ip');
+const yyz_hello = require('../libs/yyz-hello');
 
 describe('get location module', () => {
 	describe('/api/world', () => {
-		var req  = httpMocks.createRequest({
-			method: 'GET',
-			port: '5000',
-			url: '/api/world',
-		});
+    var req  = httpMocks.createRequest({
+      method: 'GET',
+      url: '/api/world',
+      port: '5000'
+    });
 
-		var res = httpMocks.createResponse({
-			eventEmitter: require('events').EventEmitter
-		});
+    var res = httpMocks.createResponse({
+      eventEmitter: require('events').EventEmitter
+    });
 
-		const getLocation = (req,res) => {
-			it('get location from IPv6', function( done ) {
-				publicIp.v6().then(ip => {
-					ip2countrify.lookup(
-						ip,
-						function( ip, results ) {
-							var country = results.countryName;
-							expect(country).toBe('United States');
-							done();
-						}
-					);
-				});
-			});
-		};
-		getLocation(req,res);
+		it('responds with location', function () {
+      yyz_hello.getLocation(req,res);
+      expect(res._getData()).toBeDefined();
+    });
 	});
-
 	describe('/api/world?json', () => {
-		var req  = httpMocks.createRequest({
-			method: 'GET',
-			port: '5000',
-			url: '/api/world',
-			query: 'json'
-		});
+    var req  = httpMocks.createRequest({
+      method: 'GET',
+      url: '/api/world',
+      query: '?json',
+      port: '5000'
+    });
 
-		var res = httpMocks.createResponse({
-			eventEmitter: require('events').EventEmitter
-		});
+    var res = httpMocks.createResponse({
+      eventEmitter: require('events').EventEmitter
+    });
 
-		const getLocation = (req,res) => {
-			it('get location from IPv6', function( done ) {
-				publicIp.v6().then(ip => {
-					ip2countrify.lookup(
-						ip,
-						function( ip, results ) {
-							var response = ({'country': results.countryName});
-							expect(response.country).toBe('United States');
-							done();
-						}
-					);
-				});
-			});
-		};
-
-		getLocation(req,res);
+		it('responds with location', function () {
+      yyz_hello.getLocation(req,res);
+      expect(res._getData()).toBeDefined();
+    });
 	});
 });
