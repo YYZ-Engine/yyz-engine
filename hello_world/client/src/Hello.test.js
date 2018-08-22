@@ -1,6 +1,4 @@
-import React from 'react';
 import axios from 'axios';
-import getGreeting from './api/hello';
 
 jest.mock('axios');
 

@@ -17,7 +17,7 @@ class Hello extends Component {
 			.then(res => { 
 				this.setState({ response: res.data.greeting + ' ' + res.data.dayOfWeek });
 			})
-			.catch(err => console.log(err));
+			.catch(err => console.error(err));
 	}
 
 	render() {
