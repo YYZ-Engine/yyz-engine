@@ -16,6 +16,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
+    "lint": "./node_modules/.bin/eslint src --fix",
     "eject": "react-scripts eject"
   },
   "jest": {
@@ -95,6 +96,8 @@
     "enzyme": "^3.4.1",
     "enzyme-adapter-react-15": "^1.0.6",
     "enzyme-adapter-react-16": "^1.2.0",
+    "eslint": "^5.4.0",
+    "eslint-plugin-react": "^7.11.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.4.2"
   }
