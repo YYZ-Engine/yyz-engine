@@ -17,7 +17,7 @@ describe('get location module', () => {
       yyz_hello.getLocation(req,res);
       expect(res._getData()).toBeDefined();
     });
-	});
+  });
 	describe('/api/world?json', () => {
     var req  = httpMocks.createRequest({
       method: 'GET',

@@ -17,6 +17,10 @@ script:
   - npm install
   - npm run lint
   - npm run test
+  - cd client
+  - npm install
+  - npm run test
+  - npm run lint 
 
 branches:
   only:
