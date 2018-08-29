@@ -17,7 +17,7 @@
     "build": "react-scripts build",
     "test": "jest",
     "lint": "./node_modules/.bin/eslint src --fix",
-    "coverage": "./node_modules/.bin/jest --coverage --coverageReporters=text-lcov | ./node_modules/coveralls/bin/coveralls.js", 
+    "coverage": "./node_modules/.bin/jest --coverage --coverageReporters=text-lcov | ./node_modules/coveralls/bin/coveralls.js",
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:5000/",
@@ -86,7 +86,6 @@
     }
   },
   "devDependencies": {
-    "coveralls": "^3.0.2",
     "babel-cli": "^6.26.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -95,9 +94,10 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-stage-0": "^6.24.1",
+    "coveralls": "^3.0.2",
     "enzyme": "^3.4.1",
     "enzyme-adapter-react-16": "^1.2.0",
-    "eslint": "^5.4.0",
+    "eslint": "^4.19.1",
     "eslint-plugin-react": "^7.11.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.4.2"
