@@ -1,6 +1,7 @@
 # NodeJS API Hello World 
 
 [![Build Status](https://travis-ci.org/YYZ-Engine/yyz-engine.svg?branch=master)](https://travis-ci.org/YYZ-Engine/yyz-engine)
+[![Coverage Status](https://coveralls.io/repos/github/zpallin/yyz-engine/badge.svg?branch=master)](https://coveralls.io/github/zpallin/yyz-engine?branch=master)
 
 API Routes: 
 * [http://localhost:5000/api/hello](Hello) returns a greeting based on the local machine
