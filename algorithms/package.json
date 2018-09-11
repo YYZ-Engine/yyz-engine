@@ -8,5 +8,8 @@
     "start": "node server.js"
   },
   "author": "Yan-Yin Choy",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jasmine": "^3.2.0"
+  }
 }
