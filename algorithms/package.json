@@ -4,7 +4,7 @@
   "description": "practice algorithms",
   "main": "server.js",
   "scripts": {
-    "test": "npm test",
+    "test": "jasmine",
     "start": "node server.js"
   },
   "author": "Yan-Yin Choy",
