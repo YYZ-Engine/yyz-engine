@@ -1,0 +1,12 @@
+{
+  "name": "algorithms",
+  "version": "1.0.0",
+  "description": "practice algorithms",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "node server.js"
+  },
+  "author": "Yan-Yin Choy",
+  "license": "MIT"
+}
