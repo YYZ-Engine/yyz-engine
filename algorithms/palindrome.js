@@ -10,10 +10,3 @@ function is_palindrome(string) {
     return string.substring(0, Math.floor(halfLength)) == (string.substring((Math.floor(halfLength)+1), string.length)).split('').reverse().join('');
   }
 }
-
-console.log(is_palindrome('mom')=== true);
-console.log(is_palindrome('abc') === false);
-console.log(is_palindrome('abba') === true);
-console.log(is_palindrome('beereb') === false);
-console.log(is_palindrome('hello olleh') === true);
-console.log(is_palindrome('good morning') === false);
