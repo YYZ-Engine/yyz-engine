@@ -5,13 +5,9 @@ const is_palindrome = (string) => {
   var length = string.length
   for (var i=0; i < half; i++) {
     var first = string[i];
-    var j = string.length
-    var last = string[j-1-i];
-    if (first === last) {
-      return true
-    } else {
-      return false
-    }
+    var last = string[string.length-1-i];
+    if (first === last) return true
+    return false
   }
 }
 
