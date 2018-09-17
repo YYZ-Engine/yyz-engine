@@ -4,9 +4,7 @@ const find_longest_word = (string) => {
   var words = string.split(' ');
   var longest_word = '';
   for (var i in words) {
-    if (longest_word === '') {
-      longest_word = words[i]
-    } else if (longest_word.length <= words[i].length) {
+    if (longest_word.length <= words[i].length) {
       longest_word = words[i]
     }
   }
