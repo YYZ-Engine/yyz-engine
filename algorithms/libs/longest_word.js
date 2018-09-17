@@ -1,6 +1,6 @@
 // Write a method that takes in a string. Return the longest word in the string.
 
-const longest_word = (string) => {
+const find_longest_word = (string) => {
   var words = string.split(' ');
   var longest_word = '';
   for (var i in words) {
@@ -14,5 +14,5 @@ const longest_word = (string) => {
 }
 
 module.exports = {
-  longest_word: longest_word,
+  find_longest_word: find_longest_word,
 }
