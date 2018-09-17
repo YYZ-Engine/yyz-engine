@@ -2,14 +2,13 @@
 
 const longest_word = (string) => {
   var words = string.split(' ');
-  for (var i = 0; i < words.length; i++) {
-    var longest_word;
-    var current_word = words[i]
-    if (longest_word == null) {
-      longest_word = current_word
-    } else if (longest_word.length <= current_word.length) {
-      longest_word = current_word
-    } 
+  var longest_word = '';
+  for (var i in words) {
+    if (longest_word === '') {
+      longest_word = words[i]
+    } else if (longest_word.length <= words[i].length) {
+      longest_word = words[i]
+    }
   }
   return longest_word
 }
