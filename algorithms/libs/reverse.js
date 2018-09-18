@@ -1,11 +1,9 @@
-// Write a method that will take a string as input, and return a new string with the same letters in reverse order.
+// Write a method that will take a string as input, and return the string  with the letters in reverse order.
+// Do not create a new string
+// Capital letters should remain capital letters
 
 const reverse = (string) => {
-  var new_string = '';
-  for (var i = string.length-1; i >= 0; i--) {
-    new_string += string[i]
-  }
-  return new_string
+  return string.split('').reverse().join('');
 }
 
 module.exports = {
