@@ -3,9 +3,10 @@
 // Capital letters should remain capital letters
 
 const reverse = (string) => {
-  return string.split('').reverse().join('');
+  if (string === '') return string; 
+  return reverse(string.substr(1)) + string[0];
 }
 
 module.exports = {
-  reverse: reverse,
+  reverse: reverse
 }
