@@ -22,8 +22,13 @@ describe('finds the longest word in the input string', () => {
     string = '0 12345 67 8910'
     expect(longest_word.find_longest_word(string)).toEqual('12345');
   });
-   it('checks if "def" is a the longest word in "abc def"', () => {
+  it('checks if "def" is a the longest word in "abc def"', () => {
     string = 'abc def'
     expect(longest_word.find_longest_word(string)).toEqual('def');
   });
+  it('checks if "helloworld" is the longest word in "abc:def .he~llo;w-orld: /bi#cy!cl^e {c}d|e [f]g h\\/j "k% l $o &p *q( r)t_ v+e- q=t ,zm\` v\'"', () => {
+    string = "abc:def .he~llo;w-orld: /bi#cy!cl^e {c}d|e [f]g h\\/j \"k% l $o &p *q( r)t_ v+e- q=t ,zm\` v\'"
+    expect(longest_word.find_longest_word(string)).toEqual('helloworld');
+  });
+
 });
