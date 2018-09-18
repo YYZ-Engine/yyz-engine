@@ -14,9 +14,9 @@ describe('checks if output is input reversed', () => {
     string = 'lottery'
     expect(reverse.reverse(string)).toBe('yrettol');
   });
-  it('checks if "hello olleh" is "hello olleh" reversed', () => {
-    string = 'hello olleh'
-    expect(reverse.reverse(string)).toBe('hello olleh');
+  it('checks if "HellO olleh" is "hello OlleH" reversed', () => {
+    string = 'hello OlleH'
+    expect(reverse.reverse(string)).toBe('HellO olleh');
   });
   it('checks if "" is "" reversed', () => {
     string = ''
