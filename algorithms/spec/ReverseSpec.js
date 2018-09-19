@@ -38,13 +38,21 @@ describe('reverse_in_place', () => {
     string = 'abba'
     expect(reverse.reverse_in_place(string)).toBe('abba');
   });
-  it('checks if "lottery" is "yrettol" reversed', () => {
-    string = 'lottery'
-    expect(reverse.reverse_in_place(string)).toBe('yrettol');
+  it('checks if "dog" is "god" reversed', () => {
+    string = 'god'
+    expect(reverse.reverse_in_place(string)).toBe('dog');
   });
-  it('checks if "HellO olleh" is "hello OlleH" reversed', () => {
-    string = 'hello OlleH'
-    expect(reverse.reverse_in_place(string)).toBe('HellO olleh');
+  it('checks if "hello world" is "dlrow olleh" reversed', () => {
+    string = 'hello world'
+    expect(reverse.reverse_in_place(string)).toBe('dlrow olleh');
+  });
+  it('checks if "lOttErY" is "YrEttOl" reversed', () => {
+    string = 'YrEttOl'
+    expect(reverse.reverse_in_place(string)).toBe('lOttErY');
+  });
+  it('checks if "DLroW ollEh" is "hEllo WorLD" reversed', () => {
+    string = 'hEllo WorLD'
+    expect(reverse.reverse_in_place(string)).toBe('DLroW ollEh');
   });
   it('checks if "" is "" reversed', () => {
     string = ''
