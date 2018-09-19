@@ -12,7 +12,15 @@ const reverse = (string) => {
 
 const reverse_in_place = (string) => {
   if (string === '') return string;
-  return string.split('').reverse().join('');
+  var arr = string.split('');
+  for (var i=0; i < arr.length/2; i++) {
+    var j=arr.length-1-i
+    var arr_i = arr[i]
+    var arr_j = arr[j]
+    arr[i] = arr_j
+    arr[j] = arr_i
+  }
+  return arr.join('');
 }
 module.exports = {
   reverse: reverse,
