@@ -47,3 +47,24 @@ describe('find_max_min', () => {
     expect(number.find_max_min(array)).toEqual([30, 5]);
   });
 });
+
+describe('factorial', () => {
+  it('checks if 1 is the factorial of 0', () => {
+    expect(number.factorial(0)).toEqual(1);
+  });
+  it('checks if 1 is the factorial of 1', () => {
+    expect(number.factorial(1)).toEqual(1);
+  });
+  it('checks if 2 is the factorial of 2', () => {
+    expect(number.factorial(2)).toEqual(2);
+  });
+  it('checks if 6 is the factorial of 3', () => {
+    expect(number.factorial(3)).toEqual(6);
+  });
+  it('checks if 120 is the factorial of 5', () => {
+    expect(number.factorial(5)).toEqual(120);
+  });
+  it('checks if 362880 is the factorial of 9', () => {
+    expect(number.factorial(9)).toEqual(362880);
+  });
+});
