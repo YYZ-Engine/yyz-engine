@@ -12,6 +12,7 @@ const reverse = (string) => {
 
 const reverse_in_place = (string) => {
   if (string === '') return string;
+  // Since Javascript strings are immutable, split the string into an array
   var arr = string.split('');
   for (var i=0; i < arr.length/2; i++) {
     var j=arr.length-1-i
