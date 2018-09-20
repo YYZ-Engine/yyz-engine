@@ -31,7 +31,7 @@ const find_max_min = (array) => {
 // As a special case, factorial(0) == 1.
 
 const factorial = (number) => {
-  if (number === 0 || number === 1) return 1;
+  if (number === 0) return 1;
   var result = 1;
   while ( number > 1) {
      result *= number
