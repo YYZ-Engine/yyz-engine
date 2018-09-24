@@ -1,17 +1,21 @@
 const arrays = require('../libs/arrays');
 
 describe('find_duplicate_values method', () => {
-  var arr = [];
+  var input = [];
+  var result = [];
   it('checks if [10,0] are the duplicate values in [10,0,-5,10,b,0,a]', () => {
-    arr = [10,0,-5,10,'b',0,'a']
-    expect(arrays.find_duplicate_values(arr)).toBe([10, 0]);
+    input = [10,0,-5,10,'b',0,'a'];
+    result = [0,10];
+    expect(arrays.find_duplicate_values(input)).toEqual(result);
   });
   it('checks if [d,o,g] are the duplicate values in [d,2,4,o,6,d,o,g,9,g,+]', () => {
-    arr = ['d',2,4,'o',6,'d','o','g',9,'g','+']
-    expect(arrays.find_duplicate_values(arr)).toBe(['d', 'o', 'g']);
+    input = ['d',2,4,'o',6,'d','o','g',9,'g','+'];
+    result = ['d','o','g'];
+    expect(arrays.find_duplicate_values(input)).toEqual(result);
   });
   it('checks if [C,a,b] are the duplicate values in [d,2,4,o,6,C,a,9,C,c,b,a,g,b,+]', () => {
-    arr = ['d',2,4,'o',6,'C','a',9,'C','c','b','a','g','b','+']
-    expect(arrays.find_duplicate_values(arr)).toBe(['C', 'a', 'b']);
+    input = ['d',2,4,'o',6,'C','a',9,'C','c','b','a','g','b','+'];
+    result=['C','a','b'];
+    expect(arrays.find_duplicate_values(input)).toEqual(result);
   }); 
 });
