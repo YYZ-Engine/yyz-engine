@@ -1,14 +1,10 @@
 const matrix = require('../libs/matrix');
 
 describe('matrix_create', () => {
-  var x;
-  var y;
-  var result;
-  it('checks if matrix_create(2,2) is [["a", "b"], ["1", "2"]]', () => {
-    x = 2;
-    y = 2;
-    result = [["a", "b"], ["1", "2"]];
-    expect(matrix.matrix_create(x,y)).toBe(result);
+  it('checks if matrix_create(2,2) creates a 2D array', () => {
+    var x = 2;
+    var y = 2;
+    expect(matrix.matrix_create(x,y).length).toBe(2);
   });
 });
 
