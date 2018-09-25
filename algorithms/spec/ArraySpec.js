@@ -5,7 +5,7 @@ describe('find_duplicate_values method', () => {
   var result = [];
   it('checks if [10,0] are the duplicate values in [10,0,-5,10,b,0,a]', () => {
     input = [10,0,-5,10,'b',0,'a'];
-    result = [0,10];
+    result = [10,0];
     expect(arrays.find_duplicate_values(input)).toEqual(result);
   });
   it('checks if [d,o,g] are the duplicate values in [d,2,4,o,6,d,o,g,9,g,+]', () => {
