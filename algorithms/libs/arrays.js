@@ -32,6 +32,6 @@ const find_duplicate_values = (array) => {
 }
 
 module.exports = {
-  isNumeric: isNumeric
+  isNumeric: isNumeric,
   find_duplicate_values: find_duplicate_values
 }
