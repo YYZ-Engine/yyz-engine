@@ -1,11 +1,12 @@
+const isNumeric = (n) => { 
+  return !isNaN(parseFloat(n)) && isFinite(n); 
+}
+
 // Write a function that finds duplicate values of a given array.
 
 const find_duplicate_values = (array) => {
   var dup_values = {};
   var result = [];
-  const isNumeric = (n) => { 
-    return !isNaN(parseFloat(n)) && isFinite(n); 
-  }
 
   // assign the count of array element to dup_values[element] 
   for (var element of array) {
@@ -31,5 +32,6 @@ const find_duplicate_values = (array) => {
 }
 
 module.exports = {
+  isNumeric: isNumeric
   find_duplicate_values: find_duplicate_values
 }
