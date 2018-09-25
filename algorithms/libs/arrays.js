@@ -13,14 +13,13 @@ const find_duplicate_values = (array) => {
     // if the value is a number, increment the count and assign it to the key
     // otherwise, assign the key to a value of 1
     dup_values[element] = isNumeric(dup_values[element]) ? dup_values[element] + 1 : 1;
-  }
 
-  // find the values greater than 1 and push to the result array
-  for (var prop in dup_values) {
-    if (dup_values[prop] > 1) {
-      isNumeric(prop) ? result.push(parseFloat(prop)) : result.push(prop) 
+    // find the values greater than 1 and push to the result array
+    if (dup_values[element] > 1) {
+      isNumeric(element) ? result.push(parseFloat(element)) : result.push(element) 
     }
   }
+
   return result;
 }
 
