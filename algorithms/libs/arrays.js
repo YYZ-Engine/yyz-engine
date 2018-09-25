@@ -11,11 +11,8 @@ const find_duplicate_values = (array) => {
   // assign the count of array element to dup_values[element] 
   for (var element of array) {
     // if the value is a number, increment the count and assign it to the key
-    if (isNumeric(dup_values[element])) { 
-      dup_values[element] ++; 
-    } else { // if the value is not a number, assign key to a value of 1
-      dup_values[element] = 1; 
-    }
+    // otherwise, assign the key to a value of 1
+    dup_values[element] = isNumeric(dup_values[element])? dup_values[element] + 1 : 1;
   }
 
   // find the values greater than 1 and push to the result array
