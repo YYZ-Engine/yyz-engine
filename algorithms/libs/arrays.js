@@ -15,9 +15,7 @@ const find_duplicate_values = (array) => {
     dup_values[element] = isNumeric(dup_values[element]) ? dup_values[element] + 1 : 1;
 
     // find the values greater than 1 and push to the result array
-    if (dup_values[element] > 1) {
-      isNumeric(element) ? result.push(parseFloat(element)) : result.push(element) 
-    }
+    if (dup_values[element] > 1) { result.push(element) }
   }
 
   return result;
