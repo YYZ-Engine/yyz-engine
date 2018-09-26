@@ -1,9 +1,19 @@
 const matrix = require('../libs/matrix');
 
 describe('matrix_create', () => {
-  it('checks if matrix_create(2,2) creates a 2D array', () => {
+  it('checks if matrix_create(2,2) creates a matrix', () => {
     var x = 2;
     var y = 2;
+    expect(matrix.matrix_create(x,y).length).toBe(2);
+  });
+  it('checks if matrix_create(3,2) creates a matrix', () => {
+    var x = 3;
+    var y = 2;
+    expect(matrix.matrix_create(x,y).length).toBe(3);
+  });
+  it('checks if matrix_create(2,3) creates a matrix', () => {
+    var x = 2;
+    var y = 3;
     expect(matrix.matrix_create(x,y).length).toBe(2);
   });
 });
