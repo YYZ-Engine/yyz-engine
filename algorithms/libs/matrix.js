@@ -24,19 +24,28 @@ const matrix_create = (x,y) => {
 
 // Takes a matrix as argument an switches the x and y axis on it. 
 const matrix_transpose = (arr) => {
-  console.log(arr.length); 
+  if (arr.length !== arr[0].length) {
+    for (var i=0; i < Math.abs(arr.length - arr[0].length); i++) {
+      arr.push([]);
+    }
+  }
+
   for (var i=0; i < arr.length; i++) {
     for (var j=0; j<i; j++) {
       var x;
       var y;
       x = arr[i][j];
       y = arr[j][i];
+      if ( x === null || y === null) {
+        arr.splice(x)
+        arr.splice(y)
+      }
       arr[i][j] = y;
       arr[j][i] = x;
       console.log("Flip ["+i+"]["+j+"] ("+x+") with ["+j+"]["+i+"] ("+y+")")
-      //console.log(arr[i][j], ", ", arr[j][i])
     }
   }
+
   console.log(arr); 
   return arr; 
 }
