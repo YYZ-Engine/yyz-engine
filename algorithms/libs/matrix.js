@@ -13,12 +13,12 @@ characters (as strings) by passing x and y coordinates of the matrix.
 const matrix_create = (x,y) => {
   var result = [];
   var x_coord = 0;
-  var y_coord = 0;
-  while (x_coord < x && y_coord < y) {
-    result.push([get_random_character(), get_random_character()]);
-    y_coord ++
+  var inner_arr = [];
+  while (x_coord < x ) { 
+    result.push(inner_arr);
     x_coord ++
   }
+  console.log(result);
   return result;
 }
 
