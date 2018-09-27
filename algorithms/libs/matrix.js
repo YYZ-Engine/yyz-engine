@@ -49,12 +49,11 @@ const matrix_transpose = (arr) => {
   for (var i=0; i <arr.length; i++) {
     arr[i] = arr[i].filter(function(n){ 
       return n !== undefined
-    })
+    }) 
   }
-  // remove the empty arrays if the original outer length > inner length
-  if (diff > 0) {
-    arr = arr.slice(0, y);
-  }
+  arr = arr.filter(function(n){ 
+    return n.length > 0
+  })
   return arr; 
 }
 
