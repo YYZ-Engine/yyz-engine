@@ -36,7 +36,11 @@ describe('matrix_transpose', () => {
     result = [["1","5","9", "13"], ["2","6","10", "14"], ["3","7","11", "15"],["4","8","12","16"]];
     expect(matrix.matrix_transpose(arr)).toEqual(result);
   });
-
+  it('checks if [["1","4"],["2","5"],["3","6"]] transposed is: [["1", "2", "3"], ["4","5","6"]]', ()=> {
+    arr = [["1","4"],["2","5"],["3","6"]];
+    result = [["1", "2", "3"], ["4","5","6"]]
+    expect(matrix.matrix_transpose(arr)).toEqual(result);
+  });
   it('checks if [["1", "2", "3"], ["4","5","6"]] is [["1","4"],["2","5"],["3","6"]] transposed', () => {
     arr = [["1", "2", "3"], ["4","5","6"]];
     result = [["1","4"],["2","5"],["3","6"]];
