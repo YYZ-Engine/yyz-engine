@@ -65,3 +65,29 @@ describe('matrix_transpose', () => {
     expect(matrix.matrix_transpose(arr)).toEqual(result);
   });
 });
+
+describe('matrix_create and matrix_transpose', () => {
+   var x = 3;
+   var y = 2;
+   var arr;
+
+  it('checks if matrix_create generates a matrix', () => {
+    arr  = matrix.matrix_create(x,y);
+    for (var i = 0; i < arr.length; i++) {
+      var hasChars = arr[i].every(value => ('0123456789ABCDEFabcdef').includes(value));
+    }
+    expect(hasChars).toBe(true);
+    expect(arr.length).toBe(x);
+    expect(arr[0].length).toBe(y);
+  });
+
+  it('checks if matrix_tranpose transposes the matrix', () => {
+    var matrix_tranposed = matrix.matrix_transpose(arr);
+    for (var i = 0; i < matrix_transposed.length; i++) {
+      var hasChars = matrix_transposed[i].every(value => ('0123456789ABCDEFabcdef').includes(value));
+    }
+    expect(matrix_tranposed.length).toBe(y);
+    expect(matrix_tranposed[0].length).toBe(x);
+    expect(hasChars).toBe(true);
+  });
+});
