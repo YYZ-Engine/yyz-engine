@@ -4,17 +4,35 @@ describe('matrix_create', () => {
   it('checks if matrix_create(2,2) creates a matrix', () => {
     var x = 2;
     var y = 2;
-    expect(matrix.matrix_create(x,y).length).toBe(2);
+    var result = matrix.matrix_create(x,y);
+    for (var i = 0; i < result.length; i++) {
+      var hasChars = result[i].every(value => ('0123456789ABCDEFabcdef').includes(value));
+    }
+    expect(hasChars).toBe(true);
+    expect(result.length).toBe(x);
+    expect(result[0].length).toBe(y);
   });
   it('checks if matrix_create(3,2) creates a matrix', () => {
     var x = 3;
     var y = 2;
-    expect(matrix.matrix_create(x,y).length).toBe(3);
+    var result = matrix.matrix_create(x,y);
+    for (var i = 0; i < result.length; i++) {
+      var hasChars = result[i].every(value => ('0123456789ABCDEFabcdef').includes(value));
+    }
+    expect(hasChars).toBe(true);
+    expect(result.length).toBe(x);
+    expect(result[0].length).toBe(y);
   });
   it('checks if matrix_create(2,3) creates a matrix', () => {
     var x = 2;
     var y = 3;
-    expect(matrix.matrix_create(x,y).length).toBe(2);
+    var result = matrix.matrix_create(x,y);
+    for (var i = 0; i < result.length; i++) {
+      var hasChars = result[i].every(value => ('0123456789ABCDEFabcdef').includes(value));
+    }
+    expect(hasChars).toBe(true);
+    expect(result.length).toBe(x);
+    expect(result[0].length).toBe(y);
   });
 });
 
