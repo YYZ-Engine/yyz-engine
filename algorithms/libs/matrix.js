@@ -29,26 +29,32 @@ const matrix_create = (x,y) => {
 
 // Takes a matrix as argument an switches the x and y axis on it. 
 const matrix_transpose = (arr) => {
-  var diff_lengths = false;
   var y = arr[0].length;
-  if (arr.length !== arr[0].length) {
-    diff_lengths = true;
-  };
+  var diff = arr.length - y;
+  // if the inner arr length is greater than the outer array length, push an array to the outer array
+  if (diff < 0) {
+    arr.push([]);
+  }
+  // loop through the inner and outer arrays
+  // flip x with arr[j][i] 
   for (var i=0; i < arr.length; i++) {
     for (var j=0; j<i; j++) {
       var x;
       x = arr[i][j];
       arr[i][j] = arr[j][i];
       arr[j][i] = x
-      console.log("Flip ["+i+"]["+j+"] ("+x+") with ["+j+"]["+i+"] ("+arr[j][i]+")");
     }
   }
-
-  if (diff_lengths) {
+  // remove undefined values from the inner arrays
+  for (var i=0; i <arr.length; i++) {
+    arr[i] = arr[i].filter(function(n){ 
+      return n !== undefined
+    })
+  }
+  // remove the empty arrays if the original outer length > inner length
+  if (diff > 0) {
     arr = arr.slice(0, y);
   }
-
-  console.log(arr);
   return arr; 
 }
 
