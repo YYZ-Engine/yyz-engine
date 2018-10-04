@@ -23,3 +23,10 @@ class Node {
     this.next = null; 
   }
 }
+
+function LinkedList() {
+  // _length retrieves the number of nodes in a list
+  this._length = 0;
+  // head assigns a node as the head of a list
+  this.head = null;
+}
