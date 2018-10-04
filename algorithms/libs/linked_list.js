@@ -16,8 +16,10 @@ You will want to implement the following functions for your Node class:
 */
 
 class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
+  constructor(data) {
+    // data stores a value
+    this.data = data; 
+    // next points to the next node
+    this.next = null; 
   }
 }
