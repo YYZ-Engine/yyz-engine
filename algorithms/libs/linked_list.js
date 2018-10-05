@@ -22,31 +22,40 @@ function Node(data) {
   this.next = null; 
 };
 
-function LinkedList() {
+function SinglyLinkedList() {
   // head is the first node in the list
   this.head = null;
-  this._length = 0;
+  this.length = 0;
+  
+  this.create = function(data) {
+    // if data doesn't exist
+    if (!data) return;
 
-  // create a new node
-  this._create = function(data) {
-    var nextNode = new Node(data),
-        currentNode = this.head;
+    // create a new Node
+    var nodeToAdd = new Node(data),
+        nodeToCheck = this.head; 
 
     // if the head is null
-    if(!currentNode) {
-      this.head = nextNode;
-      this._length++;
-      return nextNode;
+    if (!nodeToCheck) {
+      this.head = nodeToAdd;
+      this.length++;
+      
+      return nodeToAdd;
     }
 
-    // loop until we find the end
-    while(currentNode.next) {
-      currentNode = currentNode.next;
+    // loop until we find the end of the linked list    
+    while(nodeToCheck.next) {
+      nodeToCheck = nodeToCheck.next;
     }
 
-    // once we reach the end of the linked list
-    currentNode.next = nextNode;
-    this._length++;
-    return nextNode;
+    // Update the of the list and length of the list
+    nodeToCheck.next = nodeToAdd; 
+    this.length++;
+    return nodeToAdd;
   }
 };
+
+module.exports = {
+  Node: Node,
+  SinglyLinkedList: SinglyLinkedList
+}
