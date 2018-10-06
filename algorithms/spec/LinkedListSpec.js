@@ -15,5 +15,11 @@ describe('Singly Linked List', () => {
   it('checks if you can collect all the node data and return it in an Array', () => { 
     expect(result.collect()).toEqual([5, 10, 15]);
   });
-
+  it('checks if you can find a node by its index in the list', () => {
+    var Node = new linked_list.Node(); 
+    expect(result.findByIndex(0)).toEqual(Node({ data: 5, next: Node({ data: 10, next: Node({ data: 15, next: null }) }) }));
+  });
+  it('checks if you can find a node by its index in the list', () => {
+    expect(result.findByIndex(4)).toEqual(-1);
+  });
 });
