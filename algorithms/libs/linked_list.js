@@ -1,17 +1,16 @@
 /* 
-You will need to create a Node class that has the following "serialized" data structure:
+Append a Node class that has the following "serialized" data structure:
 
 #meta json
 {
   "data": $someRandomString,
   "next": $nextNodeInTheLinkedList
 }
-You will want to implement the following functions for your Node class:
-  append node to linked list
-  create a new Node
-  collect all node data and return it in a javascript Array.
-  find a node by its index in the list (return -1 when no Node exists)
-  delete a Node in a list and reconnect the list items so that the linked list is not corrupted
+Implement the following functions for your Node class:
+ -  append a new node to linked list
+ -  collect all node data and return it in a javascript Array
+ -  find a node by its index in the list (return -1 when no Node exists)
+ -  delete a Node in a list and reconnect the list items so that the linked list is not corrupted
 
 */
 
@@ -27,11 +26,11 @@ function SinglyLinkedList() {
   this.head = null;
   this.length = 0;
   
-  this.create = function(data) {
+  this.append = function(data) {
     // if data doesn't exist
     if (!data) return;
 
-    // create a new Node
+    // append a new Node
     var nodeToAdd = new Node(data),
         nodeToCheck = this.head; 
 
