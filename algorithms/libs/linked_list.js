@@ -26,6 +26,7 @@ function SinglyLinkedList() {
   this.head = null;
   this.length = 0;
   
+  // append a new node to linked list
   this.append = function(data) {
     // if data doesn't exist
     if (!data) return;
@@ -51,7 +52,26 @@ function SinglyLinkedList() {
     nodeToCheck.next = nodeToAdd; 
     this.length++;
     return nodeToAdd;
-  }
+  };
+  
+  // collect all node data and return it in a javascript Array
+  this.collect = function() {
+    if (!this.head) return;
+  
+    var nodeToCheck = this.head, 
+        nodeData = [],
+        count = 0;
+
+    while (count < this.length) {
+      nodeData.push(nodeToCheck.data);
+      nodeToCheck = nodeToCheck.next;
+      count++;
+    }
+
+    // push the data into the array
+    return nodeData;
+  };
+  
 };
 
 module.exports = {
