@@ -71,7 +71,20 @@ function SinglyLinkedList() {
     // push the data into the array
     return nodeData;
   };
+
+  // find a node by its index in the list (return -1 when no Node exists)
+  this.findByIndex = function(index) {
+    if (index > this.length) return -1;
   
+    var nodeToCheck = this.head, 
+        count = 0;
+
+    while (count < index) {
+      nodeToCheck = nodeToCheck.next;
+      count++;
+    }
+    return nodeToCheck;
+  };
 };
 
 module.exports = {
