@@ -8,5 +8,8 @@ describe('Singly Linked List', () => {
     result.append(10);
     result.append(15);
     expect(result.length).toEqual(3);
+    expect(result.head.data).toEqual(5);
+    expect(result.head.next.data).toEqual(10);
+    expect(result.head.next.next.data).toEqual(15);
   });
 });
