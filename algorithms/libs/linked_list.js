@@ -114,6 +114,8 @@ function SinglyLinkedList() {
     // set previous node's pointer to the current node's pointer
     prevNode.next = nodeToCheck.next;
     this.length--;
+    // set the removed node to null so it doesn't stay in memory
+    nodeToCheck = null;
     return this.head;
   };
 };
