@@ -94,7 +94,11 @@ function SinglyLinkedList() {
           count = 0,
           prevNode = null;
 
-    if(index === 0) return nodeToCheck.next;
+    if (index === 0) {
+      this.head = nodeToCheck.next;
+      this.length--;
+      return this.head;
+    };
   };
 };
 
