@@ -88,9 +88,9 @@ function SinglyLinkedList() {
   
   // remove a Node in a list and reconnect the list items so that the linked list is not corrupted
   this.remove = function(index) {
-     if (index > this.length) return -1;
+    if (index > this.length) return -1;
 
-     var nodeToCheck = this.head, 
+    var nodeToCheck = this.head, 
           count = 0,
           prevNode = null;
 
