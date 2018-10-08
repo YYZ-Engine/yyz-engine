@@ -43,10 +43,7 @@ function SinglyLinkedList() {
       return nodeToAdd;
     }
 
-    // loop until we find the end of the linked list    
-    while(nodeToCheck.next) {
-      nodeToCheck = nodeToCheck.next;
-    }
+    nodeToCheck = this.findByIndex(this.length-1);
 
     // Update the of the list and length of the list
     nodeToCheck.next = nodeToAdd; 
