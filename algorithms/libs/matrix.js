@@ -16,8 +16,10 @@ const create = (x,y) => {
   var x_coord = 0;
   var y_coord = 0;
   var inner_arr = [];
+  // loop while x_coord is less than # of rows
   while (x_coord < x ) { 
     result.push(inner_arr);
+    // loop while y_coord is less than # of columns
     while (y_coord < y) {
       inner_arr.push(get_random_character());
       y_coord ++
@@ -28,9 +30,17 @@ const create = (x,y) => {
 }
 
 const transpose = (arr) => {
-  return arr.reduce((prev, next) => next.map((item, i) =>
-    (prev[i] || []).concat(next[i])
-  ), []);
+  // set accumulator value to empty array
+  // track prev and next array
+  return arr.reduce((prev, next) =>
+    // call the provided  callback funcction once
+    // for each value and index in order
+    next.map((value, index) =>
+      // get prev[i] value or empty array if prev doesn't exist
+      // concatenate that value/array with next[index]
+      (prev[index] || []).concat(next[index])
+    ), []);
+  // returns single output of transposed array 
 }
 
 module.exports = {
