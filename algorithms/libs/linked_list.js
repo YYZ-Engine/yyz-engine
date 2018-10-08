@@ -74,6 +74,7 @@ function SinglyLinkedList() {
 
   // find a node by its index in the list (return -1 when no Node exists)
   this.findByIndex = function(index) {
+    // if looking for a node that doesn't exist, return error
     if (index > this.length) return -1;
   
     var nodeToCheck = this.head, 
@@ -88,12 +89,14 @@ function SinglyLinkedList() {
   
   // remove a Node in a list and reconnect the list items so that the linked list is not corrupted
   this.remove = function(index) {
+    // if removing a node that doesn't exist, return error
     if (index > this.length) return -1;
 
     var nodeToCheck = this.head, 
           count = 0,
           prevNode = null;
 
+    // if removing the first node, set the head to the next node
     if (index === 0) {
       this.head = nodeToCheck.next;
       this.length--;
