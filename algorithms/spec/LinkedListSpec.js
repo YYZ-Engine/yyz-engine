@@ -62,7 +62,17 @@ describe('Singly Linked List', () => {
     var node2 = new linked_list.Node(15);
     node1.next = node2;
     expect(list.remove(1)).toEqual(node1);
-    console.log(list);
+    expect(list.length).toEqual(2);
+  });
+  it('checks if you can remove the last node from the linked list', () => {
+    var list = new linked_list.SinglyLinkedList();
+    list.append(5);
+    list.append(10);
+    list.append(15);
+    var node1 = new linked_list.Node(5);
+    var node2 = new linked_list.Node(10);
+    node1.next = node2;
+    expect(list.remove(2)).toEqual(node1);
     expect(list.length).toEqual(2);
   });
 });
