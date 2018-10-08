@@ -82,10 +82,9 @@ describe('Singly Linked List', () => {
     list.append(15);
     var node1 = new linked_list.Node(5);
     var node2 = new linked_list.Node(10);
-    var node3 = new linked_list.Node(15);
     node1.next = node2;
     expect(list.remove(2)).toEqual(node1);
-    expect(list.findByIndex(3)).toEqual(-1);
+    expect(list.findByIndex(2)).toEqual(-1);
     expect(list.length).toEqual(2);
   });
 
