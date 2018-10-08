@@ -11,7 +11,6 @@ Creates a randomly generated matrix of single digit hexadecimal
 characters (as strings) by passing x and y coordinates of the matrix.
 */
 
-var result = [];
 const create = (x,y) => {
   var result = [];
   var x_coord = 0;
