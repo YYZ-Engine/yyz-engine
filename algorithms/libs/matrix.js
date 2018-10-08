@@ -10,7 +10,9 @@ const get_random_character = () => {
 Creates a randomly generated matrix of single digit hexadecimal
 characters (as strings) by passing x and y coordinates of the matrix.
 */
-const matrix_create = (x,y) => {
+
+var result = [];
+const create = (x,y) => {
   var result = [];
   var x_coord = 0;
   var y_coord = 0;
@@ -23,12 +25,11 @@ const matrix_create = (x,y) => {
     }
     x_coord ++
   }
-  console.log(result);
   return result;
 }
 
 // Takes a matrix as argument an switches the x and y axis on it. 
-const matrix_transpose = (arr) => {
+const transpose = (arr) => {
   var y = arr[0].length;
   var diff = arr.length - y;
   // if the inner arr length is greater than the outer array length, push an array to the outer array
@@ -51,6 +52,7 @@ const matrix_transpose = (arr) => {
       return n !== undefined
     }) 
   }
+  // remove the empty arrays from the matrix
   arr = arr.filter(function(n){ 
     return n.length > 0
   })
@@ -59,6 +61,6 @@ const matrix_transpose = (arr) => {
 
 module.exports = {
   get_random_character: get_random_character,
-  matrix_create: matrix_create,
-  matrix_transpose: matrix_transpose
+  create: create,
+  transpose: transpose
 }
