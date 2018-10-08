@@ -75,7 +75,7 @@ function SinglyLinkedList() {
   // find a node by its index in the list (return -1 when no Node exists)
   this.findByIndex = function(index) {
     // if looking for a node that doesn't exist, return error
-    if (index > this.length) return -1;
+    if (index >= this.length) return -1;
   
     var nodeToCheck = this.head, 
         count = 0;
