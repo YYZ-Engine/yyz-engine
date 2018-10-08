@@ -102,6 +102,19 @@ function SinglyLinkedList() {
       this.length--;
       return this.head;
     };
+
+    // loop until you find the node you are trying to remove
+    while (count < index) {
+      // set previous node to current node
+      prevNode = nodeToCheck;
+      // set current node to the next node
+      nodeToCheck = nodeToCheck.next;
+      count++;
+    }
+    // set previous node's pointer to the current node's pointer
+    prevNode.next = nodeToCheck.next;
+    this.length--;
+    return this.head;
   };
 };
 
