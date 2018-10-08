@@ -40,4 +40,17 @@ describe('Singly Linked List', () => {
     list.append(1);
     expect(list.remove(4)).toEqual(-1);
   });
+  it('checks if you can delete a node from the linked list', () => {
+    var list = new linked_list.SinglyLinkedList();
+    list.append(5);
+    list.append(10);
+    list.append(15);
+    var node1 = new linked_list.Node(5);
+    var node2 = new linked_list.Node(10);
+    var node3 = new linked_list.Node(15);
+    node1.next = node2;
+    node2.next = node3;
+    expect(list.remove(0)).toEqual(node2);
+    expect(list.length).toEqual(2);
+  });
 });
