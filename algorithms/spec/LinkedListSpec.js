@@ -25,4 +25,7 @@ describe('Singly Linked List', () => {
   it('checks if you can find a node by its index in the list', () => {
     expect(list.findByIndex(4)).toEqual(-1);
   });
+  it('checks if you can remove a node from the linked list', () => {
+    expect(list.remove(4)).toEqual(-1);
+  });
 });
