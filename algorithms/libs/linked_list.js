@@ -103,17 +103,13 @@ function SinglyLinkedList() {
       return this.head;
     };
 
-    // loop until you find the node you are trying to remove
-    while (count < index) {
-      // set previous node to current node
-      prevNode = nodeToCheck;
-      // set current node to the next node
-      nodeToCheck = nodeToCheck.next;
-      count++;
-    }
+    prevNode = this.findByIndex(index-1);
+    nodeToCheck = prevNode.next;
+
     // set previous node's pointer to the current node's pointer
     prevNode.next = nodeToCheck.next;
     this.length--;
+
     // set the removed node to null so it doesn't stay in memory
     nodeToCheck = null;
     return this.head;
