@@ -1,5 +1,7 @@
 YYZ Engine
 ==========
+[![Build Status](https://travis-ci.org/YYZ-Engine/yyz-engine.svg?branch=master)](https://travis-ci.org/YYZ-Engine/yyz-engine)
+[![Coverage Status](https://coveralls.io/repos/github/yyz-engine/yyz-engine/badge.svg?branch=master)](https://coveralls.io/github/yyz-engine/yyz-engine?branch=master)
 
 A web app for users to test algorithms
 
