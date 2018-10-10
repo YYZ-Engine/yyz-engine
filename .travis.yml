@@ -13,17 +13,8 @@ install:
   - npm install
 
 script:
-  - cd hello_world
-  - npm install
-  - npm run lint
-  - npm run test
-  - cd client
   - npm install
   - npm run test
-  - npm run lint 
-  - cd ..
-  - npm run coverage:server
-  - npm run coverage:client
 
 branches:
   only:
