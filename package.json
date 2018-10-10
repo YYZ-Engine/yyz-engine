@@ -1,7 +1,7 @@
 {
   "name": "algorithms",
   "version": "1.0.0",
-  "description": "practice algorithms",
+  "description": "a web app for users to interact with algorithms",
   "main": "server.js",
   "scripts": {
     "test": "jasmine",
