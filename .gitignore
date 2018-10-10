@@ -4,6 +4,10 @@
 # production
 /build
 
+# testing
+/coverage
+.coveralls.yml
+
 # misc
 .DS_Store
 .env.local
