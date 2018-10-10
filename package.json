@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "jasmine",
+    "lint": "./node_modules/.bin/eslint spec --fix && ./node_modules/.bin/eslint libs --fix",
     "start": "node server.js"
   },
   "author": "Yan-Yin Choy",
