@@ -1,47 +1,10 @@
-
 YYZ Engine
 ==========
 
-This is a project directed by zpallin, executed by ychoy (for learning).
-
-What will be covered
---------------------
-
-With some luck, you will become more familiar with:
-
-1. Build
-2. Software Scaffolding
-3. TDD
-4. CI/CD
-5. Concurrency
-6. Data Structures
-
-How it will be administered
----------------------------
-
-I will write issues here and you will need to fulfill them to the best of your ability. Issues can only be closed when I approve them.
-
-Technologies
-------------
-
-We will use the following technologies (and perhaps others):
-
-1. Javascript
-2. Ruby
-3. Bash
-4. Docker
-6. Vagrant
-7. Postgres
-8. Mongo
-
-I am thinkng about having you do work with a lower level language, maybe Java. I am not particularly knowledgeable in Java so it may be a better idea for me to learn some before I teach you, but we will figure it out as we go.
-
-The above technologies for sure I plan to teach you more about.
+A web app for users to test algorithms
 
 Git flow
 --------
-
-Here is the flow I will prefer to use:
 
 ### Summary
 
