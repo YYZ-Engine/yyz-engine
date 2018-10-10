@@ -4,17 +4,17 @@
 // Make any word with hyphens just one word
 
 const find_longest_word = (string) => {
-  // remove punctuation marks in the string and split it by one space
-  var words = string.replace(/[^\w\s]/g,'').split(' ');
-  var longest_word = '';
-  for (var i in words) {
-    if (longest_word.length <= words[i].length) {
-      longest_word = words[i]
-    }
-  }
-  return longest_word
-}
+	// remove punctuation marks in the string and split it by one space
+	var words = string.replace(/[^\w\s]/g,'').split(' ');
+	var longest_word = '';
+	for (var i in words) {
+		if (longest_word.length <= words[i].length) {
+			longest_word = words[i];
+		}
+	}
+	return longest_word;
+};
 
 module.exports = {
-  find_longest_word: find_longest_word,
-}
+	find_longest_word: find_longest_word,
+};
